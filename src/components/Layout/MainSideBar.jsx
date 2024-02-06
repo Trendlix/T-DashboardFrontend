@@ -65,8 +65,8 @@ const MainSideBar = () => {
     },
   ]
   return (
-    <div className="w-[271px] bg-white rounded-md">
-      <div className="flex flex-col items-center justify-center gap-12 py-12">
+    <div className="hidden md:block bg-white rounded-xl max-h-full min-h-screen px-6">
+      <div className="flex flex-col items-center justify-center gap-32 py-12">
         <div className="mt-4">
           <Image src={trendAdmin} width={200} height={400} alt="" />
         </div>

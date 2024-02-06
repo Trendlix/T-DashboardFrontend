@@ -56,10 +56,10 @@ const OrdersOverview = () => {
 
     ]
   return (
-    <div className='bg-white w-[650px] rounded-xl ml-[-32px] py-10 px-2 shadow-xl relative flex flex-col'>
+    <div className='bg-white w-[500px] rounded-xl py-10 px-2 shadow-xl relative flex flex-col'>
          <div className='flex flex-row justify-between px-8'>
             <div className='flex flex-col gap-4'>
-                <h1 className='text-3xl font-normal text-dark'>Orders Overview For Maggadit</h1>
+                <h1 className='text-2xl font-normal text-dark'>Orders Overview For Maggadit</h1>
                 <p className='text-gray-400 text-2xl'>
                     <span className='text-green-500 font-bold'>{`+30%`}</span> this month
                 </p>
@@ -74,7 +74,7 @@ const OrdersOverview = () => {
                         <div className='h-full w-1 bg-gray-300 rounded-full ml-3'></div>
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <p className='text-dark font-bold text-2xl'>{item.label}</p>
+                        <p className='text-dark font-bold text-xl'>{item.label}</p>
                         <p className='text-gray-400 text-2xl '>{item.date}</p>
                     </div>
                 </div>

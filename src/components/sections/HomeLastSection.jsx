@@ -4,7 +4,7 @@ import SalesOverview from '../ui/SalesOverview'
 
 const HomeLastSection = () => {
   return (
-    <div className='flex flex-row gap-16 w-full pb-12 pr-10'>
+    <div className='flex flex-row gap-16 w-full pb-12 pl-5 pr-10'>
         <OrdersOverview />
         <SalesOverview />
     </div>

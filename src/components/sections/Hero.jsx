@@ -39,14 +39,14 @@ const Hero = () => {
       {cards.map((card)=>(
         <div className="relative" key={card.id}>
           <div className='h-32 bg-cover'>
-            <Image src={BackgroundCard} alt='background gradient' width={380} height={200}/>
+            <Image src={BackgroundCard} alt='background gradient' width={300} height={200}/>
           </div>
-            <div className="relative bottom-24 left-10 flex flex-col z-10 items-start gap-10">
+            <div className="relative bottom-24 left-10 flex flex-col z-10 items-start gap-4">
               <div className='bg-white rounded-lg w-12 h-12 flex items-center justify-center'>
                 <Image src={card.iconSrc} alt='icon for card' />
               </div>
-              <p className='font-bold text-xl text-black'>{card.title}</p>
-              <p className='font-bold text-3xl'>{card.number}</p>
+              <p className='font-bold text-lg text-black'>{card.title}</p>
+              <p className='font-semibold text-3xl'>{card.number}</p>
           </div>
 
         </div>

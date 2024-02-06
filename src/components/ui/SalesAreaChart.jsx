@@ -72,6 +72,7 @@ const SalesAreaChart = () => {
       },
     },
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -80,7 +81,7 @@ const SalesAreaChart = () => {
   };
 
   return (
-    <div className='flex-1 h-full flex items-center'>
+    <div className='h-[80%] flex items-center pt-10'>
       <Line data={data} options={options} />
     </div>
   );
