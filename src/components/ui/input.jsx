@@ -1,11 +1,11 @@
 import { cn } from "@/utils/utils"
 
-function Input({id= "", className = "", type = "text", label = "", placeholder = "", required = false, value = "", onChange = ()=>{}}) {
+function Input({id= "", labelClassName = "", className = "", type = "text", label = "", placeholder = "", required = false, value = "", onChange = ()=>{}}) {
   return (
     <div className="mb-5">
         <label 
         htmlFor={id} 
-        className="block mb-2 text-sm font-medium text-gray-900">
+        className={cn("block mb-2 text-sm font-medium text-gray-900", labelClassName)}>
             {label}
         </label>
         <input 

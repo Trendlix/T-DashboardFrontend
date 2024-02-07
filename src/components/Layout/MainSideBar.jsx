@@ -11,69 +11,83 @@ import Image from 'next/image';
 import React from "react";
 import Link from 'next/link'
 import { usePathname } from "next/navigation"
+import analyticsFocus from "@/public/icons/analytics-white.svg"
+import settingsFocus from "@/public/icons/settings-white.svg"
+import ordersFocus from "@/public/icons/orders-white.svg"
+import adminFocus from "@/public/icons/admin-white.svg"
+import grayDashboard from "@/public/icons/gray-dashboard.svg"
+
 
 
 
 const MainSideBar = () => {
   const pathname = usePathname()
+  const basePathname = pathname === '/' ? pathname : pathname.slice(1)
   console.log(pathname)
 
   
   const sideItems = [
     {
       id: 1,
-      src: Dashboard,
+      notFocusSrc: grayDashboard,
+      focusSrc: Dashboard,
       href: '/',
       label: 'Dashboard',
     },
     {
       id: 2,
-      src: WebsiteAdmin, 
-      href: '/admin',
+      focusSrc: adminFocus,
+      notFocusSrc: WebsiteAdmin, 
+      href: 'admin',
       label: 'Website Admin'
     },
     {
       id: 3,
-      src: Bag, 
-      href: '/orders',
+      focusSrc: ordersFocus,
+      notFocusSrc: Bag, 
+      href: 'orders',
       label: 'Orders',
       orderNumber: 8,
     },
     {
       id: 4,
-      src: Chart, 
-      href: '/analytics',
+      focusSrc: analyticsFocus,
+      notFocusSrc: Chart, 
+      href: 'analytics',
       label: 'Analytics'
     },
     {
       id: 5,
-      src: Users, 
-      href: '/customers',
+      focusSrc: '',
+      notFocusSrc: Users, 
+      href: 'customers',
       label: 'Customer'
     },
     {
       id: 6,
-      src: Blogs, 
-      href: '/blogs',
+      focusSrc: '',
+      notFocusSrc: Blogs, 
+      href: 'blogs',
       label: 'Blogs'
     },
     {
       id: 7,
-      src: Settings, 
-      href: '/settings',
+      focusSrc: settingsFocus,
+      notFocusSrc: Settings, 
+      href: 'settings',
       label: 'Settings'
     },
   ]
   return (
     <div className="hidden md:block bg-white rounded-xl max-h-full min-h-screen px-6">
-      <div className="flex flex-col items-center justify-center gap-32 py-12">
+      <div className="flex flex-col items-center justify-center gap-36 py-12">
         <div className="mt-4">
           <Image src={trendAdmin} width={200} height={400} alt="" />
         </div>
         <div className={`flex flex-col gap-12 items-center justify-center`}>
           {sideItems.map((item)=>(
-              <Link href={item.href} key={item.id} className={`flex flex-row w-[216px] items-center gap-3 px-3 text-gray-400 opacity-3 ${pathname===item.href && `bg-rose-600 rounded-lg py-4 text-white`} ${item.label === 'Website Admin' && ` text-nowrap`}` }>
-                <Image src={item.src} width={25} height={25} alt=""/>
+              <Link href={`/${item.href}`} key={item.id} className={`flex flex-row w-[216px] items-center gap-3 px-3 text-gray-400 opacity-3 ${basePathname.startsWith(item.href) && `bg-rose-600 rounded-xl py-4 text-white`} ${item.label === 'Website Admin' && ` text-nowrap`}` }>
+                <Image src={pathname===item.href ? item.focusSrc : item.notFocusSrc} width={22} height={22} alt=""/>
                 <p className="text-lg font-bold text-center">{item.label}</p>
                 {item.orderNumber && 
                   (<div className="bg-rose-600 w-4 h-4 rounded-full p-3 flex items-center justify-center">
