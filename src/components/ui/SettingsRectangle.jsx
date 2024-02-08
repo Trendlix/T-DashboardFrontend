@@ -8,7 +8,7 @@ const SettingsRectangle = ({srcIcon = '', title, subTitle, iconWidth, iconHeight
             <Image src={srcIcon} width={iconWidth} height={iconHeight} alt='icon settings' />
             <div className='flex flex-col'>
                 <h1 className={`text-2xl text-dark ${TitleStyle}`}>{title}</h1>
-                <p className={`text-gray-400 text-xl font-light ${subtitleStyle}`}>{subTitle}</p>
+                <p className={`text-gray-400 text-lg font-light ${subtitleStyle}`}>{subTitle}</p>
             </div>
         </div>
         <div className='border-b-4 border-[#E6E8F0]'></div>

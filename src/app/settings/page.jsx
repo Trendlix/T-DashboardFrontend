@@ -14,28 +14,28 @@ const SettingsPage = () => {
     const adminDashboardCards = [
         {
             id: 1, 
-            link: '/settings/adduser',
+            link: '/settings/add-user',
             icon: addUser,
             title: 'Add User',
             subTitle: 'Add new user , select roles , set permissions.'
         },
         {
             id: 2, 
-            link: '/settings/listusers',
+            link: '/settings/list-users',
             icon: listUsers,
             title: 'List Users',
             subTitle: 'Listing users, remove users, view their permission.'
         },
         {
             id: 3, 
-            link: '/settings/addwebsite',
+            link: '/settings/add-website',
             icon: addWebsite,
             title: 'Add New Website',
             subTitle: 'Add new website , admin panel , domin , wordpress website.'
         },
         {
             id: 4, 
-            link: '/settings/removewebsite',
+            link: '/settings/remove-website',
             icon: removeWebsite,
             title: 'Remove Website',
             subTitle: 'Remove website , admin panel , domin , wordpress website.'
