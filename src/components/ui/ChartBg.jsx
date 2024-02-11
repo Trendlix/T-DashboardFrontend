@@ -31,11 +31,11 @@ const ChartBg = ({children, title, subTitle, statValue = '', isWidthHalf = true}
         }
     ]
   return (
-    <div className={`${isWidthHalf ? 'w-1/2' : 'w-full'} bg-white rounded-xl py-10 px-2 shadow-xl relative flex flex-col`}>
-        <div className='flex flex-row justify-between px-8'>
+    <div className={`${isWidthHalf ? 'w-1/2' : 'w-full'} bg-white rounded-lg pt-3 pb-4 shadow-xl relative flex flex-col`}>
+        <div className='flex flex-row justify-between px-6'>
             <div>
-                <h1 className='text-3xl font-normal'>{title}</h1>
-                <h2 className='text-gray-400 text-lg px-1'>{subTitle}</h2>
+                <h1 className='text-xl font-semibold'>{title}</h1>
+                <h2 className='text-gray-400 px-1 text-sm'>{subTitle}</h2>
             </div>
             <button onClick={openModal}>
                 <Image src={Dots} width={15} height={15} alt='options' />
@@ -43,7 +43,7 @@ const ChartBg = ({children, title, subTitle, statValue = '', isWidthHalf = true}
         </div>
             {isOpen && (
                 <div className='flex justify-end'>
-                    <div className='absolute top-14 right-9 mt-8 bg-white border p-4 w-44 h-32 rounded-lg shadow-xl flex flex-col gap-3 opacity-90'>
+                    <div className='absolute top-3 right-6 mt-8 bg-white border p-4 w-44 h-32 rounded-lg shadow-xl flex flex-col gap-3 opacity-90'>
                         {modalRows.map((row)=>(
                             <button key={row.id} className='flex flex-row items-center gap-2'>
                                 <Image src={row.icon} width={22} height={22} alt='icon' />
@@ -53,10 +53,10 @@ const ChartBg = ({children, title, subTitle, statValue = '', isWidthHalf = true}
                     </div>
                 </div>
             )}
-        <div className='z-5 border-b-4 border-b-gray-200 mt-4'></div>
+        <div className='z-5 border-b-2 border-b-gray-200 mt-2'></div>
         {statValue !== '' && (
-            <div className='py-2 px-5'>
-                <h3 className='text-4xl text-dark font-medium'>{statValue} K</h3>
+            <div className='py-1 px-5'>
+                <h3 className='text-3xl text-dark font-medium'>{statValue} K</h3>
             </div>
         )}
         <div className='flex-1'>

@@ -4,11 +4,11 @@ import SalesAreaChart from './SalesAreaChart'
 
 const SalesOverview = () => {
   return (
-    <div className='bg-white flex-1 rounded-xl py-10 px-2 shadow-xl relative flex flex-col'>
-         <div className='flex flex-row justify-between px-8'>
-            <div className='flex flex-col gap-4'>
-                <h1 className='text-2xl font-normal text-dark'>Sales Overview For Tawwos</h1>
-                <p className='text-gray-400 text-2xl'>
+    <div className='bg-white flex-1 rounded-xl pt-4 pb-2 shadow-xl relative flex flex-col'>
+         <div className='flex flex-row justify-between px-4'>
+            <div className='flex flex-col'>
+                <h1 className='text-xl font-semibold text-dark'>Sales Overview For Tawwos</h1>
+                <p className='text-gray-400 text-sm pt-1'>
                     <span className='text-green-500 font-bold'>{`(+5) more`}</span> in 2023
                 </p>
             </div>

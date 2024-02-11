@@ -14,9 +14,9 @@ const MainNavBar = () => {
     <nav className='gap-10 md:gap-24 flex flex-row h-28 bg-white py-2 items-center px-12 '>
       <div className="flex flex-col gap-1">
         <h1 className="font-bold text-3xl text-dark">Hi, Marcelo!</h1>
-        <p className="text-[#718096] text-lg">Let's check your website today</p>
+        <p className="text-[#718096] text-sm text-nowrap">Let's check your website today</p>
       </div>
-      <div className="flex flex-row gap-2 items-center w-[500px] h-[48px] py-7 px-[16px] bg-gray-100 rounded-lg text-lg ">
+      <div className="flex flex-row gap-2 items-center w-[500px] h-[40px] py-7 px-[16px] bg-gray-100 rounded-lg text-lg ">
         <Image src={Search} className="" alt=""/>
         <input type="text" placeholder="Search..." className="outline-none border-none w-full bg-gray-100 placeholder-gray-300 placeholder-lg rounded-lg text-lg"/>
       </div>

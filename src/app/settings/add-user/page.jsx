@@ -11,7 +11,6 @@ import Image from "next/image"
 import dropDown from "@/public/icons/dropdown-gray.svg"
 
 
-
 const AddUserPage = () => {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -23,23 +22,23 @@ const AddUserPage = () => {
     const [isPhoneFocused, setIsPhoneFocused] = useState(false)
 
     
-    const labelClassName = 'text-lg text-[#4C535F]'
-    const inputClassName = 'w-[400px] px-4 py-4 bg-white text-md text-gray-600 outline-none h-18'
+    const labelClassName = 'text-base font-semibold text-[#4C535F]'
+    const inputClassName = 'w-[400px] px-4 py-4 bg-white text-sm text-gray-600 outline-none h-18'
   return (
     <Layout>
-        <div className='pt-6 pl-14 w-[90%] pb-72'>
+        <div className='pt-6 pl-14 w-[90%] pb-72 '>
             <BackArrow />
             <SettingsRectangle 
                 srcIcon={addUser} 
-                iconHeight={50} 
-                iconWidth={50} 
+                iconHeight={40} 
+                iconWidth={40} 
                 title='Add User' 
                 subTitle='Add new user , select roles , set permissions.' 
-                TitleStyle='font-semibold text-black'
-                subtitleStyle='text-gray-500 text-lg font-normal'
+                TitleStyle='font-bold text-black text-sm'
+                subtitleStyle='text-gray-500 font-normal'
             />
-            <div className='mt-4 py-20 flex flex-row items-center px-40 gap-32 bg-white rounded-t-lg '>
-                <div className='flex flex-col gap-4'>
+            <div className='mt-4 pt-10 pb-8 flex flex-row justify-center px-40 gap-32 bg-white rounded-t-lg shadow-lg shadow-gray-200'>
+                <div className='flex flex-col'>
                     <Input 
                         label='Full name' 
                         id='name' 
@@ -73,9 +72,9 @@ const AddUserPage = () => {
                         className= {inputClassName}
                         labelClassName= {labelClassName}
                     />
-                    <Button text='Add User' className='self-start sm:w-48 text-lg' onClick={()=>{}}/>
+                    <Button text='Add User' className='self-start text-base sm:w-48 mt-3 mb-7' onClick={()=>{}}/>
                 </div>
-                <div className='flex flex-col mb-16 gap-4'>
+                <div className='flex flex-col'>
                     <Input 
                         label='Email' 
                         id='email' 
@@ -87,7 +86,7 @@ const AddUserPage = () => {
                         className= {inputClassName}
                         labelClassName= {labelClassName}
                     />
-                    <div className='flex flex-col bg-white'>
+                    <div className='flex flex-col bg-white mb-5'>
                         <label htmlFor="phoneNumber" className={`block mb-2 font-medium text-gray-900 ${labelClassName}`}>Phone Number</label>
                         <div className={`flex flex-row w-[400px] gap-2 bg-white border border-gray-300 rounded-lg items-center ${isPhoneFocused && `ring-yellow-500 border-yellow-500` }`}>
                             <p className='border-r-2 border-gray-300 px-2 text-lg text-gray-400'>+1</p>
@@ -100,11 +99,11 @@ const AddUserPage = () => {
                                 onChange={(event)=>setPhoneNumber(event.target.value)}
                                 onFocus={()=>setIsPhoneFocused(true)}
                                 onBlur={()=>setIsPhoneFocused(false)}
-                                className={`rounded-lg block w-full py-4 bg-white text-md text-gray-400 outline-none h-18`}
+                                className={`rounded-lg block w-full py-4 bg-white text-sm text-gray-400 outline-none h-18`}
                             />
                         </div>
                     </div>
-                    <div className="mb-5 mt-5">
+                    <div className="mb-5">
                         <label htmlFor='role' className={cn("block mb-2 text-sm font-medium text-gray-900", labelClassName)}>
                             Role
                         </label>
@@ -116,7 +115,7 @@ const AddUserPage = () => {
                             onChange={(event) => setRole(event.target.value)}
                             onFocus={() => setIsRoleFocused(true)}
                             onBlur={() => setIsRoleFocused(false)}
-                            className={`appearance-none rounded-lg block w-full max-w-[230px] px-4 py-4 bg-white text-md text-gray-400 outline-none`}
+                            className={`appearance-none rounded-lg block w-full max-w-[230px] px-4 py-4 bg-white text-base text-gray-400 outline-none`}
                             >
                             <option value="systemAdministrator" className='text-gray-400 font-semibold rounded-lg w-full'>System Administrator</option>
                             <option value="user" className='text-gray-400 font-semibold rounded-lg w-full'>User</option>

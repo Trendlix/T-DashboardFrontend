@@ -31,29 +31,29 @@ const SettingsPage = () => {
             link: '/settings/add-website',
             icon: addWebsite,
             title: 'Add New Website',
-            subTitle: 'Add new website , admin panel , domin , wordpress website.'
+            subTitle: 'Add new website , admin panel , domain , wordpress website.'
         },
         {
             id: 4, 
             link: '/settings/remove-website',
             icon: removeWebsite,
             title: 'Remove Website',
-            subTitle: 'Remove website , admin panel , domin , wordpress website.'
+            subTitle: 'Remove website , admin panel , domain , wordpress website.'
         }
     ]
   return (
     <Layout>
-        <div className='pt-6 pl-14 w-[90%] pb-72'>
+        <div className='pt-6 pl-14 w-[90%] pb-96'>
             <SettingsRectangle title='Settings' subTitle='Add or Remove Users, Admins, Seo, Permissions' srcIcon={SettingsIcon} iconHeight={40} iconWidth={40} />
-            <div className='py-8 flex flex-col gap-3 '>
-                <h2 className='text-dark font-semibold text-xl pl-2'>Personal Info</h2>
-                <SettingsCard title='My Personal info' subTitle='Provide your personal details Name , picture.' srcIcon={PersonalInfo} iconHeight={40} iconWidth={40} cardLink='/profile' />
+            <div className='py-6 flex flex-col gap-3 '>
+                <h2 className='text-dark font-semibold text-md pl-2'>Personal Info</h2>
+                <SettingsCard title='My Personal info' subTitle='Provide your personal details Name , picture.' srcIcon={PersonalInfo} iconHeight={35} iconWidth={35} cardLink='/settings/profile' />
             </div>
             <div className='pb-10 flex flex-col gap-3'>
-                <h2 className='text-dark font-semibold text-xl pl-2'>Admin Dashboard</h2>
+                <h2 className='text-dark font-semibold text-md pl-2'>Admin Dashboard</h2>
                 <div className='flex flex-row gap-6'>
                     {adminDashboardCards.map((card, index) => (
-                        <SettingsCard key={card.id} title={card.title} subTitle={card.subTitle} srcIcon={card.icon} iconHeight={40} iconWidth={40} cardLink={card.link}/>
+                        <SettingsCard key={card.id} title={card.title} subTitle={card.subTitle} srcIcon={card.icon} iconHeight={35} iconWidth={35} cardLink={card.link}/>
                     ))}
                 </div>
             </div>

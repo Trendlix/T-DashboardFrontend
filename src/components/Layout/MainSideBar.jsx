@@ -79,16 +79,16 @@ const MainSideBar = () => {
     },
   ]
   return (
-    <div className="hidden md:block bg-white rounded-xl max-h-full min-h-screen px-6">
-      <div className="flex flex-col items-center justify-center gap-36 py-12">
+    <div className="hidden md:block bg-white rounded-xl h-screen px-6 overflow-hidden">
+      <div className="flex flex-col items-center justify-center gap-20 py-12">
         <div className="mt-4">
           <Image src={trendAdmin} width={200} height={400} alt="" />
         </div>
-        <div className={`flex flex-col gap-12 items-center justify-center`}>
+        <div className={`flex flex-col gap-8 items-center justify-center`}>
           {sideItems.map((item)=>(
               <Link href={`/${item.href}`} key={item.id} className={`flex flex-row w-[216px] items-center gap-3 px-3 text-gray-400 opacity-3 ${basePathname.startsWith(item.href) && `bg-rose-600 rounded-xl py-4 text-white`} ${item.label === 'Website Admin' && ` text-nowrap`}` }>
-                <Image src={pathname===item.href ? item.focusSrc : item.notFocusSrc} width={22} height={22} alt=""/>
-                <p className="text-lg font-bold text-center">{item.label}</p>
+                <Image src={basePathname.startsWith(item.href) ? item.focusSrc : item.notFocusSrc} width={22} height={22} alt=""/>
+                <p className=" text-md font-bold text-center">{item.label}</p>
                 {item.orderNumber && 
                   (<div className="bg-rose-600 w-4 h-4 rounded-full p-3 flex items-center justify-center">
                     <p className="text-white">{item.orderNumber}</p>

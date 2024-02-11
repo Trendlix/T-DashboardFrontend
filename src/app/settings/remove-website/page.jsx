@@ -16,11 +16,11 @@ const RemoveWebsitePage = () => {
             <BackArrow />
             <SettingsRectangle 
                 srcIcon={removeWebsite} 
-                iconHeight={40} 
-                iconWidth={40} 
+                iconHeight={30} 
+                iconWidth={30} 
                 title='Remove Website' 
                 subTitle='Remove website, domain.' 
-                TitleStyle='font-semibold text-black text-xl'
+                TitleStyle='font-semibold text-dark text-lg'
                 subtitleStyle='text-gray-500 text-sm font-normal'
             />
             <div className='flex flex-col mt-6 bg-white'>

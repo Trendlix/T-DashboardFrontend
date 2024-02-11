@@ -31,13 +31,13 @@ const Page = () => {
               {/* the down part of websites */}
               <div className='w-full flex-1 h-full'>
                 <ChartBg title='Websites' subTitle='Custom Coding - Wordpress Websites' isWidthHalf={false}>
-                  <div className='flex flex-col ml-[-8px] mr-[-8px]'>
+                  <div className='flex flex-col'>
                     {list.map((item, index)=>(
                       <WebsiteCard item={item} index={index} key={item.id} />
                     ))}
                   </div>
 
-                  <div className='flex flex-row items-center justify-center gap-10 pt-20 mb-[-20px]'>
+                  <div className='flex flex-row items-center justify-center gap-10 pt-20'>
                     <div className='flex flex-row gap-3'>
                       <Image src={redCircle} width={20} height={20} alt='icon colored' />
                       <p className='text-xl'>Custom Coding</p>

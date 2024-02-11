@@ -60,10 +60,10 @@ const BarChart = ({data}) => {
 
   return (
     <ChartBg title='Blog Statistics' subTitle='Farwla Tech' statValue='112,340'>
-        <div className='flex flex-col h-full justify-between'>
+        <div className='flex flex-col h-full gap-6 px-6 mt-20'>
           <Bar data={chartData} options={options} />
           {/* footer of component */}
-          <div className='flex flex-row gap-6 px-4 pt-8'>
+          <div className='flex flex-row gap-6'>
               <div className='flex flex-row gap-2 items-center'>
                   <Image src={BlueCircle} width={15} height={12} alt='circle' />
                   <p className='text-md text-gray-400'>{`Pending(10%)`}</p>

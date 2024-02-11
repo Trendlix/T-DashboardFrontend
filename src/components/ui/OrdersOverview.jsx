@@ -56,26 +56,26 @@ const OrdersOverview = () => {
 
     ]
   return (
-    <div className='bg-white w-[500px] rounded-xl py-10 px-2 shadow-xl relative flex flex-col'>
-         <div className='flex flex-row justify-between px-8'>
-            <div className='flex flex-col gap-4'>
-                <h1 className='text-2xl font-normal text-dark'>Orders Overview For Maggadit</h1>
-                <p className='text-gray-400 text-2xl'>
+    <div className='bg-white w-2/6 rounded-xl pt-4 pb-2 shadow-xl relative flex flex-col'>
+         <div className='flex flex-row justify-between px-4'>
+            <div className='flex flex-col'>
+                <h1 className='text-xl font-semibold text-dark'>Orders Overview For Maggadit</h1>
+                <p className='text-gray-400 text-sm pt-1'>
                     <span className='text-green-500 font-bold'>{`+30%`}</span> this month
                 </p>
             </div>
         </div>
         <div className='z-5 border-b-4 border-b-gray-200 mt-4'></div>
-        <div className='mt-6'>
+        <div className='mt-3'>
             {salesData.map((item)=>(
                 <div key={item.id} className='flex flex-row gap-4 px-4 py-1'>
-                    <div className='h-24 flex flex-col gap-2'>
-                        <Image src={item.icon} height={28} width={28} alt='icon data' />
-                        <div className='h-full w-1 bg-gray-300 rounded-full ml-3'></div>
+                    <div className='flex flex-col h-16 gap-1'>
+                        <Image src={item.icon} height={20} width={20} alt='icon data' />
+                        <div className='h-full w-0.5 bg-gray-300 rounded-full ml-2.5'></div>
                     </div>
-                    <div className='flex flex-col gap-2'>
-                        <p className='text-dark font-bold text-xl'>{item.label}</p>
-                        <p className='text-gray-400 text-2xl '>{item.date}</p>
+                    <div className='flex flex-col gap-1'>
+                        <p className='text-dark font-bold text-xs'>{item.label}</p>
+                        <p className='text-gray-400 text-sm '>{item.date}</p>
                     </div>
                 </div>
             ))}

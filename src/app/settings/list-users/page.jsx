@@ -75,8 +75,8 @@ const ListUsersPage = () => {
                 TitleStyle='font-semibold text-black'
                 subtitleStyle='text-gray-500 text-sm font-normal'
             />
-            <div className='mt-4 py-4 grid-container bg-white border rounded-lg overflow-hidden'>
-                <div className="grid-labels px-6 py-4 grid grid-cols-5 text-[#718096] text-xl">
+            <div className='mt-4 py-4 grid-container bg-white border rounded-lg overflow-hidden shadow-lg shadow-gray-200'>
+                <div className="grid-labels px-8 py-4 grid grid-cols-5 text-[#718096] text-xl">
                     <div className="grid-label">User Name</div>
                     <div className="grid-label flex flex-row items-center gap-2">
                         <p>Created</p>
@@ -84,27 +84,27 @@ const ListUsersPage = () => {
                     </div>
                     <div className="grid-label">Created by</div>
                     <div className="grid-label">User Type</div>
-                    <div className="grid-label ml-[-40px]">Actions</div>
+                    <div className="grid-label">Actions</div>
                 </div>
                 <div className='border-b-2 border-[#E6E8F0] py-1'></div>
                 
                 {listUsersData.map((user)=>(
-                    <div key={user.id} className="grid-row grid grid-cols-5 px-6 py-4">
-                        <div className="grid-cell py-4 text-dark font-bold text-lg">{user.username}</div>
-                        <div className="grid-cell py-4 text-dark font-light text-lg ">{user.created}</div>
-                        <div className="grid-cell py-4 text-lg text-dark font-semibold">{user.createdBy}</div>
+                    <div key={user.id} className="grid-row grid grid-cols-5 px-8 py-4">
+                        <div className="grid-cell py-4 text-dark font-bold text-[19px]">{user.username}</div>
+                        <div className="grid-cell py-4 text-gray-600 font-light text-lg ">{user.created}</div>
+                        <div className="grid-cell py-4 text-lg text-dark font-medium">{user.createdBy}</div>
                         <div className={`grid-cell py-4`}>
                             <p className={`w-20 text-center rounded-md py-1 ${user.userType === 'Admin'? `text-green-500 bg-green-200` : `text-purple-500 bg-purple-200`}`}>{user.userType}</p>
                         </div>
-                        <div className="grid-cell py-4 flex flex-row gap-1 ml-[-40px]">
-                            <div className='flex flex-row gap-1 items-center text-sm px-3 rounded-md text-white bg-black'>
+                        <div className="grid-cell py-4 flex flex-row gap-1">
+                            <div className='flex flex-row gap-1 items-center text-xs h-6 w-40 justify-center rounded-[5px] text-white bg-black'>
                                 <Image src={permissions} width={20} height={20} alt='permissions' />
                                 <button type='button' onClick={()=>{}} >
                                     Permissions
                                 </button>
                             </div>
-                            <div className='flex flex-row gap-1 items-center text-sm px-3 rounded-md text-white bg-[#FF0000]'>
-                                <Image src={trashWhite} width={15} height={15} alt='trash icon' />
+                            <div className='flex flex-row gap-1 items-center text-xs h-6 w-40 justify-center rounded-[3px] text-white bg-[#FF0000]'>
+                                <Image src={trashWhite} width={14} height={14} alt='trash icon' />
                                 <button type='button' onClick={()=>{}} >
                                 Remove User
                                 </button>
