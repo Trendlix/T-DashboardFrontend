@@ -39,13 +39,13 @@ const Page = () => {
 
                   <div className='flex flex-row items-center justify-center gap-10 pt-20'>
                     <div className='flex flex-row gap-3'>
-                      <Image src={redCircle} width={20} height={20} alt='icon colored' />
-                      <p className='text-xl'>Custom Coding</p>
+                      <Image src={redCircle} width={15} height={15} alt='icon colored' />
+                      <p className='text-sm'>Custom Coding</p>
                     </div>
 
                     <div className='flex flex-row gap-3'>
-                      <Image src={yellowCircle} width={20} height={20} alt='icon colored' />
-                      <p className='text-xl'>Wordpress</p>
+                      <Image src={yellowCircle} width={15} height={15} alt='icon colored' />
+                      <p className='text-sm'>Wordpress</p>
                     </div>
                   </div>
                 </ChartBg>

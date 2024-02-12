@@ -8,9 +8,12 @@ import greenArrow from "@/public/icons/arrow-up-green.svg"
 import Image from "next/image"
 import permissions from "@/public/icons/permissions.svg"
 import trashWhite from "@/public/icons/trash-white.svg"
+import Modal from '@/components/ui/Modal'
+import { useModal } from '@/app/ModalProvider'
 
 
 const ListUsersPage = () => {
+    const {handleOpen} = useModal()
     const listUsersData = [
         {
             id: '1', 
@@ -105,9 +108,10 @@ const ListUsersPage = () => {
                             </div>
                             <div className='flex flex-row gap-1 items-center text-xs h-6 w-40 justify-center rounded-[3px] text-white bg-[#FF0000]'>
                                 <Image src={trashWhite} width={14} height={14} alt='trash icon' />
-                                <button type='button' onClick={()=>{}} >
+                                <button type='button' onClick={handleOpen} >
                                 Remove User
                                 </button>
+                                <Modal modalText="User Removed" opacity="bg-opacity-10"/>
                             </div>
                         </div>
                     </div>

@@ -9,9 +9,12 @@ import Input from '@/components/ui/input'
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import dropDown from "@/public/icons/dropdown-gray.svg"
+import { useModal } from '@/app/ModalProvider'
+import Modal from '@/components/ui/Modal'
 
 
 const AddWebsitePage = () => {
+    const {handleOpen} = useModal()
     const [websiteName, setWebsiteName] = useState('')
     const [websiteType, setWebsiteType] = useState('')
     const [logo, setLogo] = useState('Upload logo : Png , JPG , JPEG') 
@@ -117,7 +120,8 @@ const AddWebsitePage = () => {
                     />
                 </div>
             </div>
-            <Button text='Add Website' className='sm:w-48 text-base py-3' onClick={()=>{}}/>
+            <Button text='Add Website' className='sm:w-48 text-base py-3' onClick={handleOpen}/>
+            <Modal modalText="Website Added" opacity="bg-opacity-50"/>
         </div>
 
 

@@ -9,9 +9,12 @@ import { cn } from "@/utils/utils"
 import Button from '@/components/ui/button'
 import Image from "next/image"
 import dropDown from "@/public/icons/dropdown-gray.svg"
+import { useModal } from '@/app/ModalProvider'
+import Modal from '@/components/ui/Modal'
 
 
 const AddUserPage = () => {
+    const {handleOpen} = useModal()
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
@@ -72,7 +75,8 @@ const AddUserPage = () => {
                         className= {inputClassName}
                         labelClassName= {labelClassName}
                     />
-                    <Button text='Add User' className='self-start text-base sm:w-48 mt-3 mb-7' onClick={()=>{}}/>
+                    <Button text='Add User' className='self-start text-base sm:w-48 mt-3 mb-7' onClick={handleOpen}/>
+                    <Modal modalText="User Added Successfully" opacity="bg-opacity-45" />
                 </div>
                 <div className='flex flex-col'>
                     <Input 

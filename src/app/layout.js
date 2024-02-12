@@ -1,3 +1,5 @@
+import Modal from '@/components/ui/Modal'
+import { ModalProvider } from './ModalProvider'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 
@@ -14,7 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} bg-gray-100`}>{children}</body>
-    </html>
+      <body className={`${poppins.className}`}>
+        <ModalProvider>
+          {children}
+          {/* <Modal modalText="web" /> */}
+        </ModalProvider>
+      </body>
+    </html> 
   )
 }

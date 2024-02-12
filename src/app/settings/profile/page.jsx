@@ -10,9 +10,12 @@ import Button from '@/components/ui/button'
 import Image from "next/image"
 import editBtn from "@/public/images/edit-button.png"
 import profile from "@/public/images/rounded-profile.png"
+import { useModal } from '@/app/ModalProvider'
+import Modal from '@/components/ui/Modal'
  
 
 const ProfilePage = () => {
+  const {handleOpen} = useModal()
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
@@ -89,7 +92,8 @@ const ProfilePage = () => {
                       className={cn("mb-5 block text-base font-semibold text-[#E41C40]")}>
                           System Administrator
                     </p>
-                    <Button text='Save Changes' onClick={()=>{}} className='sm:w-[150px] py-4 mt-8 mb-10' />
+                    <Button text='Save Changes' onClick={handleOpen} className='sm:w-[150px] py-4 mt-8 mb-10' />
+                    <Modal modalText="Changes Saved Successfully" opacity="bg-opacity-40" />
                     <Input 
                       label='Current Password' 
                       id='current password' 
@@ -124,7 +128,8 @@ const ProfilePage = () => {
                       labelClassName= {labelClassName}
                     />
 
-                    <Button text='Save Changes' onClick={()=>{}} className='sm:w-[150px] py-4 mb-5' />
+                    <Button text='Save Changes' onClick={handleOpen} className='sm:w-[150px] py-4 mb-5' />
+                    <Modal modalText="Changes Saved Successfully" opacity="bg-opacity-40" />
 
               </div>
             </div>

@@ -6,11 +6,14 @@ import redCircle from "@/public/icons/red-circle.svg"
 import yellowCircle from "@/public/icons/yellow-circle.svg"
 import tawwosWord from "@/public/icons/tawwos-word.svg"
 import trashWhite from "@/public/icons/trash-white.svg"
+import Modal from './Modal';
+import { useModal } from '@/app/ModalProvider';
 
 
 
 
 const WebsiteCard = ({item, index, isDelete = false}) => {
+    const {handleOpen} = useModal()
   return (
     <div className={`h-[200px] flex flex-row justify-between items-center py-14 px-8 ${isDelete && `pr-24`} ${index % 2!==0 ? `bg-gray-100`: `bg-white`}`}>
         <div className='flex flex-row gap-6 items-center'>
@@ -28,11 +31,13 @@ const WebsiteCard = ({item, index, isDelete = false}) => {
         </div>
         {isDelete ? 
         (
-            <div className='flex flex-row gap-1 items-center text-sm h-7 w-32 justify-center rounded-[5px] text-white bg-[#FF0000]'>
+            <div className='flex flex-row gap-1 px-1 items-center text-xs h-7 w-32 justify-center rounded-[5px] text-white bg-[#FF0000]'>
                 <Image src={trashWhite} width={15} height={15} alt='trash icon' />
-                <button type='button' onClick={()=>{}} >
-                Remove User
+                <button type='button' onClick={handleOpen} >
+                Remove Website
                 </button>
+                
+                <Modal modalText="Website Removed" opacity="bg-opacity-5" />
             </div>
         ) : (
             <div className='flex flex-row justify-center gap-3 items-center text-sm font-semibold'>
