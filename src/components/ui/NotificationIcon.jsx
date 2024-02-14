@@ -5,9 +5,9 @@ import Image from 'next/image';
 const NotificationIcon = ({ hasNotifications }) => {
   return (
     <div className='relative'>
-        <Image src={Bell} width={25} height={25} alt='' className=""/>
+        <Image src={Bell} width={22} height={22} alt='' className=""/>
         {hasNotifications && 
-            (<div className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></div>)
+            (<div className="absolute top-0 right-0 h-2 w-2 bg-[#FF0B2D] rounded-full"></div>)
         }
     </div>
   )

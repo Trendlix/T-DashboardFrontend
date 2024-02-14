@@ -60,8 +60,8 @@ const AddWebsitePage = () => {
                                 className={`hidden`}
                                 accept='.jpeg, .jpg, .png'
                             />
-                            <p className='text-sm text-[#8D98AA] font-medium'>{logo}</p>
-                            <label htmlFor="logo" className='bg-gray-400 text-sm text-white py-3 px-2 rounded-md font-semibold cursor-pointer'>Browse Files</label>
+                            <p className='text-xs text-[#8D98AA] font-medium'>{logo}</p>
+                            <label htmlFor="logo" className='bg-gray-400 text-sm text-white py-3 px-2 rounded-md font-semibold cursor-pointer text-nowrap'>Browse Files</label>
                         </div>
                     </div>
                     <Input 
