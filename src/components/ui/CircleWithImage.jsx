@@ -9,7 +9,7 @@ const CircleWithImage = ({ percentage, imageUrl, borderColor, circleColor, shado
   console.log(borderRadius);
 
   return (
-    <div className={`relative w-[75px] h-[75px] border-[#D21734] rounded-full overflow-hidden`} 
+    <div className={`relative w-20 h-20 border-[#D21734] rounded-full overflow-hidden`} 
       style={{backgroundColor: circleColor}}
     >
       {/* Circle with border */}

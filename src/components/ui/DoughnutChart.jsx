@@ -37,17 +37,20 @@ const DoughnutChart = ({ currentCustomers, newCustomers, totalVisitors }) => {
     
   return (
     <ChartBg title='Visitors' subTitle='visitors of Trendlix'>
-        <div className='flex flex-col justify-between items-center h-full'>
+        <div className='flex flex-col h-full justify-between '>
           {/* chart  */}
-            <div className='flex flex-row p-5 gap-5'>
-                <div className='relative'>
-                    <Doughnut data={data} options={options} />
-                    <div className=''>
-                      <span >Total {totalPercentage}%</span>
+            <div className='flex flex-row gap-5 pt-6' >
+                <div className='relative e-full flex flex-row items-center'>
+                    <Doughnut data={data} options={options} className='z-20 p-0' />
+                    <div className='bg-[#FAFBFF] w-24 h-24 rounded-full flex items-center justify-center absolute right-[34%] top-[43%] z-10 shadow-2xl shadow-gray-500'>
+                      <div className='flex flex-col items-center'>
+                        <p className='font-bold text-xl'>{totalPercentage}%</p>
+                        <p>Total</p>
+                      </div>
                     </div>
                 </div>
 
-                <div className=' flex-1 flex flex-col justify-center gap-8'>
+                <div className='flex-1 flex flex-col justify-center gap-8 '>
                     <div className='flex flex-row gap-3 items-center'>
                       <CircleWithImage percentage={30} imageUrl={RedArrow} borderColor='#7D040A' shadowColor='#f3aab4' circleColor='#FFE0E4'/>
                       <div className='flex flex-col'>
@@ -70,7 +73,7 @@ const DoughnutChart = ({ currentCustomers, newCustomers, totalVisitors }) => {
             <div className='self-center flex flex-row gap-6 pt-10'>
                 <div className='flex flex-row gap-2 items-center'>
                     <Image src={RedCircle} width={15} height={12} alt='circle' />
-                    <p className='text-sm'>Current customers</p>
+                    <p className='text-md'>Current customers</p>
                 </div>
                 <div className='flex flex-row gap-2 items-center'>
                     <Image src={YellowCircle} width={15} height={12} alt='circle' />
