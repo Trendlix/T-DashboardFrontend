@@ -11,24 +11,83 @@ import Image from "next/image"
 import dropDown from "@/public/icons/dropdown-gray.svg"
 import { useModal } from '@/app/ModalProvider'
 import Modal from '@/components/ui/Modal'
+import { imageUpload } from '@/utils/imageUpload'
+import axios from "axios"
+import Swal from 'sweetalert2'
+import Cookies from 'js-cookie';
+
 
 
 const AddWebsitePage = () => {
-    const {handleOpen} = useModal()
+    const {handleOpen, handleClose } = useModal()
     const [websiteName, setWebsiteName] = useState('')
-    const [websiteType, setWebsiteType] = useState('')
-    const [logo, setLogo] = useState('Upload logo : Png , JPG , JPEG') 
+    const [websiteType, setWebsiteType] = useState('wordpress')
+    const [logoPlaceholder, setLogoPlaceholder] = useState('Upload logo : Png , JPG , JPEG') 
+    const [logo, setLogo] = useState(null) 
     const [domain, setDomain] = useState('')
     const [password, setPassword] = useState('')
     const [dashboard, setDashboard] = useState('')
     const [isWebsiteTypeFocused, setIsWebsiteTypeFocused] = useState(false)
     const [isLogoFocused, setIsLogoFocused] = useState(false)
-
-
+    const [uploadedUrl, setUploadedUrl] = useState('')
 
     const labelClassName = 'text-[#4C535F] text-base'
     const inputClassName = 'w-[320px] px-2 py-3 bg-white text-sm font-medium text-[#8D98AA] outline-none h-[62px]'
-  return (
+    
+    axios.defaults.withCredentials = true;
+
+    const handleFileInput = (e) =>{
+        const fileName = e.target.files[0].name
+        if(fileName.length > 20){
+            const editedFileName = `${fileName.slice(0, 15)}...`
+            setLogoPlaceholder(editedFileName)
+        }else{
+            setLogoPlaceholder(fileName)
+        }
+        const imageFile = e.target.files[0]
+        setLogo(imageFile)
+    }
+    const handleSubmit = async (e) =>{
+        try {
+            e.preventDefault()
+            const imageUrl = await imageUpload(logo, 'WebsitesLogos')
+            setUploadedUrl(imageUrl)
+            // TODO: Post all data to our api including imageUrl uploaded on firebase
+            const accessToken = Cookies.get('accessToken')
+            console.log('Access token: ' + accessToken)
+            await axios.post(`http://localhost:5000/website`, {
+                name: websiteName,
+                domain,
+                adminDomain: dashboard,
+                type: websiteType,
+                logo: uploadedUrl,
+            },{
+                withCredentials: true, 
+                headers:{
+                    'Content-Type': 'application/json', 
+                }
+            }).then((data)=>{
+                console.log(`data: ${data}`);
+                handleOpen()
+            }).catch((error)=>{
+                Swal.fire({
+                    title: 'Error!',
+                    text: error?.response?.data?.message || "An error occured while sending data",
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+                setUploadedUrl('')
+                handleClose()
+            })
+        } catch (error) {
+            handleClose()
+            console.log(error)
+            setUploadedUrl('')      
+        }
+        // console.log(websiteName, domain, dashboard, websiteType)
+    }
+
+    return (
     <Layout>
         <div className='pt-6 pl-14 w-[90%] pb-72'>
             <BackArrow />
@@ -42,7 +101,7 @@ const AddWebsitePage = () => {
                 subtitleStyle='text-gray-500 text-lg font-normal'
             />
 
-        <div className='flex flex-col items-start justify-around gap-5 px-28 mt-4 pt-12 pb-16 bg-white rounded-t-lg shadow-lg shadow-gray-200'>
+        <form className='flex flex-col items-start justify-around gap-5 px-28 mt-4 pt-12 pb-16 bg-white rounded-t-lg shadow-lg shadow-gray-200'>
 
             <div className='flex flex-row items-center justify-center gap-32'>
                 <div className='flex flex-col'>
@@ -54,13 +113,13 @@ const AddWebsitePage = () => {
                                 id='logo' 
                                 type='file' 
                                 required={true} 
-                                onChange={(event)=>setLogo(event.target.files[0].name)}
+                                onChange={handleFileInput} 
                                 onFocus={()=>setIsLogoFocused(true)}
                                 onBlur={()=>setIsLogoFocused(false)}
                                 className={`hidden`}
                                 accept='.jpeg, .jpg, .png'
                             />
-                            <p className='text-xs text-[#8D98AA] font-medium'>{logo}</p>
+                            <p className='text-xs text-[#8D98AA] font-medium'>{logoPlaceholder}</p>
                             <label htmlFor="logo" className='bg-gray-400 text-sm text-white py-3 px-2 rounded-md font-semibold cursor-pointer text-nowrap'>Browse Files</label>
                         </div>
                     </div>
@@ -73,7 +132,7 @@ const AddWebsitePage = () => {
                         value={password}
                         onChange={(event)=>setPassword(event.target.value)}
                         type='password'
-                        required={true}
+                        required={false}
                     />
                 </div>
                 <div className='flex flex-col'>
@@ -91,8 +150,8 @@ const AddWebsitePage = () => {
                             onBlur={() => setIsWebsiteTypeFocused(false)}
                             className={`appearance-none font-medium rounded-lg block w-full max-w-[230px] h-[62px] px-4 py-3 bg-white text-md text-[#8D98AA] outline-none`}
                             >
-                            <option value="systemAdministrator" className='text-[#8D98AA] font-medium rounded-lg w-full'>Wordpress</option>
-                            <option value="user" className='text-[#8D98AA] font-medium rounded-lg w-full'>Custom Coding</option>
+                            <option value="wordpress" className='text-[#8D98AA] font-medium rounded-lg w-full'>Wordpress</option>
+                            <option value="custom coding" className='text-[#8D98AA] font-medium rounded-lg w-full'>Custom Coding</option>
                             </select>
                             <Image src={dropDown} width={12} height={12} alt='down arrow' className='absolute right-4' />
                         </div>
@@ -120,9 +179,9 @@ const AddWebsitePage = () => {
                     />
                 </div>
             </div>
-            <Button text='Add Website' className='sm:w-48 text-base py-3' onClick={handleOpen}/>
+            <Button text='Add Website' className='sm:w-48 text-base py-3' type='submit' onClick={handleSubmit}/>
             <Modal modalText="Website Added" opacity="bg-opacity-50"/>
-        </div>
+        </form>
 
 
 

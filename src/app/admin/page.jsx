@@ -18,7 +18,7 @@ const Page = () => {
     <Layout>
         <div className='relative'>
           <div className='w-full h-96 bg-cover absolute top-0 left-0'>
-            <Image src={CoverImage} alt='cover image Trendlix'/>
+            <Image src={CoverImage} width="auto" height="auto" alt='cover image Trendlix'/>
           </div>
           <div className='flex items-center justify-center flex-col gap-4 py-64'>
             <div className='w-[80%] h-full'>

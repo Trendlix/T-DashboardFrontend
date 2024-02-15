@@ -7,6 +7,7 @@ import RouteLink from "@/components/ui/link"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import Swal from 'sweetalert2'
+import Cookies from "js-cookie"
 
 function Form() {
   const router = useRouter()
@@ -23,6 +24,8 @@ function Form() {
         text: "Welcome to trendlix dashboard",
         icon: "success"
       });
+      const tokens = data.data.tokens
+      Cookies.set("accessToken", tokens[tokens.length - 1])
       router.replace('/')
     })
     .catch(e=>{
@@ -30,7 +33,7 @@ function Form() {
       Swal.fire({
         title: 'Error!',
         text: e?.response?.data?.message || "An error occured while sending data",
-        icon: 'error',
+        icon: 'error',  
         confirmButtonText: 'Ok'
       })
     })

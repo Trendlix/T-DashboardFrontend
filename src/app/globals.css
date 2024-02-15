@@ -12,3 +12,9 @@ button, img, .button, .img{ user-select: none; -webkit-user-select: none; -ms-us
 :root { scrollbar-color: #E41C40 #000; scrollbar-width: thin; }
 body::-webkit-scrollbar { width: 0.5em; background-color: #000; border-radius: 20px; }
 body::-webkit-scrollbar-thumb { background-color: #E41C40; border-radius: 20px; }
+
+
+img{
+    max-width: auto;
+    max-height: auto;
+}

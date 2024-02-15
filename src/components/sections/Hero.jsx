@@ -16,13 +16,13 @@ const Hero = () => {
           number: 345
         },
         {
-          id: 1,
+          id: 2,
           iconSrc: Activity,
           title: 'Contacted Trendlix',
           number: 212
         },
         {
-          id: 1,
+          id: 3,
           iconSrc: Users3,
           title: 'Trendlix Blogs',
           number: 1349
@@ -32,7 +32,7 @@ const Hero = () => {
   return (
     <div className='relative'>
     <div className='w-full h-96 bg-cover absolute top-0 left-0'>
-        <Image src={CoverImage} alt='cover image Trendlix'/>
+        <Image width="auto" height="auto" src={CoverImage} alt='cover image Trendlix'/>
     </div>
 
     <div className='relative top-32 pl-2 z-10 flex items-center h-full text-gray-600'>
@@ -43,7 +43,7 @@ const Hero = () => {
           </div>
             <div className="relative bottom-24 left-10 flex flex-col z-10 items-start gap-4">
               <div className='bg-white rounded-lg w-12 h-12 flex items-center justify-center'>
-                <Image src={card.iconSrc} alt='icon for card' />
+                <Image width="auto" height="auto" src={card.iconSrc} alt='icon for card' />
               </div>
               <p className='font-bold text-lg text-black'>{card.title}</p>
               <p className='font-semibold text-3xl'>{card.number}</p>

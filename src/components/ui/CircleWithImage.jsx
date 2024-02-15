@@ -20,7 +20,7 @@ const CircleWithImage = ({ percentage, imageUrl, borderColor, circleColor, shado
         <div className="inset-0 flex items-center justify-center bg-white rounded-full w-8 h-8" 
             style={{boxShadow:`0 4px 12px 9px ${shadowColor}`}}
         >
-            <Image src={imageUrl} alt="Circle Image" className="w-6 h-6" />
+            <Image src={imageUrl} width="auto" height="auto" alt="Circle Image" className="w-6 h-6" />
         </div>
       </div>
       
