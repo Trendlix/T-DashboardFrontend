@@ -14,7 +14,7 @@ function Form() {
   const handleSubmit = async (e) => {
       e.preventDefault()
       console.log('submitting...', form)
-      await axios.post('http://localhost:5000/signup', {...form})
+      await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/signup`, {...form})
       .then(data=> {
         Swal.fire({
           title: "Success!",

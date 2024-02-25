@@ -65,15 +65,15 @@ const BarChart = ({data}) => {
           {/* footer of component */}
           <div className='flex flex-row gap-6'>
               <div className='flex flex-row gap-2 items-center'>
-                  <Image src={BlueCircle} width={15} height={12} alt='circle' />
+                  <Image src={BlueCircle} width={12} height={12} alt='circle' />
                   <p className='text-md text-gray-400'>{`Pending(10%)`}</p>
               </div>
               <div className='flex flex-row gap-2 items-center'>
-                  <Image src={PurpleCircle} width={15} height={12} alt='circle' />
+                  <Image src={PurpleCircle} width={12} height={12} alt='circle' />
                   <p className='text-md text-gray-400'>Income</p>
               </div>
               <div className='flex flex-row gap-2 items-center'>
-                  <Image src={RoseCircle} width={15} height={12} alt='circle' />
+                  <Image src={RoseCircle} width={12} height={12} alt='circle' />
                   <p className='text-md text-gray-400'>Expenses</p>
               </div>
             </div>

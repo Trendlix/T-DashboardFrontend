@@ -9,23 +9,19 @@ const CircleWithImage = ({ percentage, imageUrl, borderColor, circleColor, shado
   console.log(borderRadius);
 
   return (
-    <div className={`relative w-20 h-20 border-[#D21734] rounded-full overflow-hidden`} 
+    <div className={`relative w-20 h-20 border-[#D21734] rounded-full`} 
       style={{backgroundColor: circleColor}}
     >
       {/* Circle with border */}
       <div
-        className="absolute inset-0 border-pink-600 rounded-full flex items-center justify-center shadow-xl"
-        style={{borderRadius: '50%'}}
+        className="absolute inset-0 rounded-full flex items-center justify-center shadow-xl circle-with-border"
       >
         <div className="inset-0 flex items-center justify-center bg-white rounded-full w-8 h-8" 
             style={{boxShadow:`0 4px 12px 9px ${shadowColor}`}}
         >
             <Image src={imageUrl} width="auto" height="auto" alt="Circle Image" className="w-6 h-6" />
         </div>
-      </div>
-      
-
-      {/* Image in the center */}
+      </div>      
     </div>
   );
 };

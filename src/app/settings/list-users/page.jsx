@@ -10,10 +10,64 @@ import permissions from "@/public/icons/permissions.svg"
 import trashWhite from "@/public/icons/trash-white.svg"
 import Modal from '@/components/ui/Modal'
 import { useModal } from '@/app/ModalProvider'
-
+import axios from "axios"
+import { useState, useCallback, useEffect } from "react"
+import Swal from "sweetalert2"
 
 const ListUsersPage = () => {
-    const {handleOpen} = useModal()
+    const {handleOpen, handleClose} = useModal()
+    const [usersList, setUserList] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
+    const getAllUsers = useCallback(
+      async () => {
+        try {
+            setIsLoading(true)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API}/users`, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type' : 'application/json'
+                }
+            })
+            if(response.status === 200){
+                const data = await response.data
+                setUserList(data)
+            }
+        } catch (error) {
+            console.log(error)
+            setIsLoading(false)
+        }finally{
+            setIsLoading(false)
+        }
+      },
+      [],
+    )
+
+    const handleDeleteButton = useCallback(async(userId)=>{
+        try {
+            const response = await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_API}/users/${userId}`)
+            if(response.status === 200) {
+                handleOpen()
+            }
+        } catch (error) {
+            handleClose()
+            console.log(error)
+            Swal.fire({
+                title: 'Error!',
+                text: e?.response?.data?.message || "An error occurred while sending data",
+                icon: 'error',  
+                confirmButtonText: 'Ok'
+              })
+        }        
+    },[handleClose, handleOpen])
+
+    useEffect(() => {
+      getAllUsers()
+      const list = usersList.length>0 ? usersList : 'no users'
+      console.log(list)
+    }, [getAllUsers, usersList])
+
+
     const listUsersData = [
         {
             id: '1', 
@@ -93,8 +147,8 @@ const ListUsersPage = () => {
                 
                 {listUsersData.map((user)=>(
                     <div key={user.id} className="grid-row grid grid-cols-5 px-8 py-4">
-                        <div className="grid-cell py-4 text-dark font-bold text-[19px]">{user.username}</div>
-                        <div className="grid-cell py-4 text-gray-600 font-light text-lg ">{user.created}</div>
+                        <div className="grid-cell py-4 text-dark font-bold text-base">{user.username}</div>
+                        <div className="grid-cell py-4 text-gray-600 font-light text-base ">{user.created}</div>
                         <div className="grid-cell py-4 text-lg text-dark font-medium">{user.createdBy}</div>
                         <div className={`grid-cell py-4`}>
                             <p className={`w-20 text-center rounded-md py-1 ${user.userType === 'Admin'? `text-green-500 bg-green-200` : `text-purple-500 bg-purple-200`}`}>{user.userType}</p>

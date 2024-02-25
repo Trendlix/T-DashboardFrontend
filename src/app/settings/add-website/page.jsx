@@ -55,7 +55,7 @@ const AddWebsitePage = () => {
             // TODO: Post all data to our api including imageUrl uploaded on firebase
             const accessToken = Cookies.get('accessToken')
             console.log('Access token: ' + accessToken)
-            await axios.post(`http://localhost:5000/website`, {
+            await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/website`, {
                 name: websiteName,
                 domain,
                 adminDomain: dashboard,
@@ -102,7 +102,6 @@ const AddWebsitePage = () => {
             />
 
         <form className='flex flex-col items-start justify-around gap-5 px-28 mt-4 pt-12 pb-16 bg-white rounded-t-lg shadow-lg shadow-gray-200'>
-
             <div className='flex flex-row items-center justify-center gap-32'>
                 <div className='flex flex-col'>
                     <Input id='webName' label='Website Name' value={websiteName} onChange={(event)=>setWebsiteName(event.target.value)} placeholder='Please enter website name' type='text' required={true} labelClassName={labelClassName} className={inputClassName} />
@@ -182,12 +181,11 @@ const AddWebsitePage = () => {
             <Button text='Add Website' className='sm:w-48 text-base py-3' type='submit' onClick={handleSubmit}/>
             <Modal modalText="Website Added" opacity="bg-opacity-50"/>
         </form>
-
-
-
         </div>
     </Layout>
+    
   )
 }
 
 export default AddWebsitePage
+

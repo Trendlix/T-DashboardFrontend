@@ -29,12 +29,12 @@ const RemoveWebsitePage = () => {
                 ))}
                 <div className='flex flex-row items-center justify-center gap-10 pt-10 pb-4'>
                     <div className='flex flex-row gap-3'>
-                      <Image src={redCircle} width={20} height={20} alt='icon colored' />
+                      <Image src={redCircle} className='w-20 h-20' alt='icon colored' />
                       <p className='text-xl'>Custom Coding</p>
                     </div>
 
                     <div className='flex flex-row gap-3'>
-                      <Image src={yellowCircle} width={20} height={20} alt='icon colored' />
+                      <Image src={yellowCircle} className='w-20 h-20' alt='icon colored' />
                       <p className='text-xl'>Wordpress</p>
                     </div>
                 </div>

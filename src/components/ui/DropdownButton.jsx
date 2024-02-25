@@ -30,6 +30,7 @@ const DropdownButton = ({ setList, list,  buttonText, options}) => {
     const handleDropdownToggle = () =>{
       setIsDropdownOpen(!isDropdownOpen)
     }
+    
     return (
         <div className='relative inline-block'>
           <button

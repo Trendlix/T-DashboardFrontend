@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useCallback } from 'react'
 import Link from 'next/link';
 import Image from "next/image"
 import redCircle from "@/public/icons/red-circle.svg"
@@ -8,21 +8,45 @@ import tawwosWord from "@/public/icons/tawwos-word.svg"
 import trashWhite from "@/public/icons/trash-white.svg"
 import Modal from './Modal';
 import { useModal } from '@/app/ModalProvider';
-
+import Swal from 'sweetalert2'
 
 
 
 const WebsiteCard = ({item, index, isDelete = false}) => {
-    const {handleOpen} = useModal()
+    const {handleOpen, handleClose} = useModal()
+
+    // const handleDeleteWebsite = useCallback(async() => {
+    //     try {
+    //         const response = await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_API}/website/${item._id}`,{
+    //             withCredentials: true,
+    //             headers: {"Content-Type" : "application/json"}
+    //         })
+    //         if(response.status===200){
+    //             handleOpen()
+    //         }
+    //         console.log(response)
+    //     } catch (error) {
+    //         handleClose()
+    //         console.log(error)
+    //         Swal.fire({
+    //         title: 'Error!',
+    //         text: e?.response?.data?.message || "An error occurred while sending data",
+    //         icon: 'error',  
+    //         confirmButtonText: 'Ok'
+    //      })
+    //         
+    //     }
+    // },[handleClose,handleOpen])
+    
   return (
     <div className={`h-[200px] flex flex-row justify-between items-center py-14 px-8 ${isDelete && `pr-24`} ${index % 2!==0 ? `bg-gray-100`: `bg-white`}`}>
         <div className='flex flex-row gap-6 items-center'>
-            {item.isCustom ? (<Image src={redCircle} width={16} height={16} alt='icon colored' />) : (<Image src={yellowCircle} width={16} height={16} alt='icon colored' />)}
+            {item.isCustom ? (<Image src={redCircle} className='w-15 h-15' alt='icon colored' />) : (<Image src={yellowCircle} width={16} height={16} alt='icon colored' />)}
             {item.company === 'Tawwos' ? 
             (
             <div className='flex flex-row items-center'>
-                <Image src={item.logo} width={120} height={120} alt='company logo'/>
-                <Image src={tawwosWord} width={75} height={75} alt='company logo' className='ml-[-78px]'/>
+                <Image src={item.logo} className='w-36 h-36' alt='company logo'/>
+                <Image src={tawwosWord} alt='company logo' className='ml-[-90px] w-20 h-20'/>
             </div>
             ) : (
                 <Image src={item.logo} width={item.company==='Farawla Tech' || item.company==='Trendlix' ? 60 : 70} height={item.company === 'Farawla Tech' || item.company==='Trendlix' ? 50 : 70} alt='company logo'/>

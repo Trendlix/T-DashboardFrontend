@@ -16,8 +16,7 @@ import settingsFocus from "@/public/icons/settings-white.svg"
 import ordersFocus from "@/public/icons/orders-white.svg"
 import adminFocus from "@/public/icons/admin-white.svg"
 import grayDashboard from "@/public/icons/gray-dashboard.svg"
-
-
+import Cookies from 'js-cookie'
 
 
 const MainSideBar = () => {
@@ -25,7 +24,9 @@ const MainSideBar = () => {
   const basePathname = pathname === '/' ? pathname : pathname.slice(1)
   console.log(pathname)
 
-  
+  const isAdmin = Cookies.get('adminToken')
+  console.log(isAdmin)
+
   const sideItems = [
     {
       id: 1,
@@ -78,6 +79,15 @@ const MainSideBar = () => {
       label: 'Settings'
     },
   ]
+  let itemsWithoutAdmin = [];
+
+  if (!isAdmin) {
+    itemsWithoutAdmin = sideItems.filter((item) => item.href !== 'admin');
+  }
+  
+  // console.log('without ' + itemsWithoutAdmin.length);
+  
+
   return (
     <div className="hidden md:block bg-white rounded-xl h-screen px-6 overflow-hidden">
       <div className="flex flex-col items-center justify-center gap-20 py-12">
@@ -85,11 +95,14 @@ const MainSideBar = () => {
           <Image src={trendAdmin} width={200} height={400} alt="" />
         </div>
         <div className={`flex flex-col gap-8 items-center justify-center`}>
-          {sideItems.map((item)=>(
-              <Link href={`/${item.href}`} key={item.id} className={`flex flex-row w-[216px] items-center gap-3 px-3 text-gray-400 opacity-3 ${basePathname.startsWith(item.href) && `bg-rose-600 rounded-xl py-4 text-white`} ${item.label === 'Website Admin' && ` text-nowrap`}` }>
-                <Image src={basePathname.startsWith(item.href) ? item.focusSrc : item.notFocusSrc} width={22} height={22} alt=""/>
+          {(itemsWithoutAdmin.length>0?itemsWithoutAdmin:sideItems).map((item)=>(
+              <Link 
+                href={`/${item.href}`} 
+                key={item.id} 
+                className={`flex flex-row w-[216px] items-center gap-3 px-3 text-gray-400 opacity-3 transition-all duration-300 ease-in-out transform  ${basePathname.startsWith(item.href) && `bg-rose-600 rounded-xl py-4 text-white`} ${item.label === 'Website Admin' && ` text-nowrap`}` }>
+                <Image src={basePathname.startsWith(item.href) ? item.focusSrc : item.notFocusSrc} className='w-18 h-18' alt=""/>
                 <p className=" text-md font-bold text-center">{item.label}</p>
-                {item.orderNumber && 
+                {item.orderNumber &&  
                   (<div className="bg-rose-600 w-4 h-4 rounded-full p-3 flex items-center justify-center">
                     <p className="text-white">{item.orderNumber}</p>
                   </div>

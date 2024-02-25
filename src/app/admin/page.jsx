@@ -1,6 +1,6 @@
 "use client"
 import Layout from '@/components/Layout/Layout'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from "next/image"
 import Dropdown from "@/public/icons/dropdown.svg"
 import ChartBg from '@/components/ui/ChartBg'
@@ -10,10 +10,32 @@ import yellowCircle from "@/public/icons/yellow-circle.svg"
 import CoverImage from "@/public/images/cover-home.png"
 import DropdownButton from '@/components/ui/DropdownButton'
 import WebsiteCard from '@/components/ui/WebsiteCard'
+import axios from "axios"
 
 const Page = () => {
   const [list, setList] = useState(websiteAdminData)
+  const [isLoading, setIsLoading] = useState(false)
 
+  useEffect(()=>{
+    const fetchWebsites = async () => {
+      try {
+        setIsLoading(true)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API}/website`,{
+          withCredentials: true, 
+          headers:{
+              'Content-Type': 'application/json', 
+          }
+        })
+        const result = await response.data
+        console.log(result)
+      } catch (error) {
+        console.error(error)
+      }finally{
+        setIsLoading(false)
+      }
+    }
+    fetchWebsites()
+  }, [])
   return (
     <Layout>
         <div className='relative'>
@@ -39,12 +61,12 @@ const Page = () => {
 
                   <div className='flex flex-row items-center justify-center gap-10 pt-20'>
                     <div className='flex flex-row gap-3'>
-                      <Image src={redCircle} width={15} height={15} alt='icon colored' />
+                      <Image src={redCircle} className='w-15 h-15' alt='icon colored' />
                       <p className='text-sm'>Custom Coding</p>
                     </div>
 
                     <div className='flex flex-row gap-3'>
-                      <Image src={yellowCircle} width={15} height={15} alt='icon colored' />
+                      <Image src={yellowCircle} className='w-15 h-15' alt='icon colored' />
                       <p className='text-sm'>Wordpress</p>
                     </div>
                   </div>

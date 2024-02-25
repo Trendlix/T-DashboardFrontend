@@ -42,6 +42,12 @@ const AddUserPage = () => {
             },{withCredentials: true, headers: {'Content-Type': 'application/json'}})
             if(response.status === 200){
                 handleOpen()
+                setUsername('');
+                setPassword('');
+                setPhoneNumber('');
+                setFullName('');
+                setEmail('');
+                setRole('user');
             }
         } catch (error) {
             console.log(error)
@@ -52,13 +58,6 @@ const AddUserPage = () => {
                 icon: "error",
                 confirmButtonText: 'OK',
             })
-        }finally{
-            setUsername('');
-            setPassword('');
-            setPhoneNumber('');
-            setFullName('');
-            setEmail('');
-            setRole('user');
         }
     },[handleClose, handleOpen, role, username, email, password, phoneNumber, fullName])
   return (

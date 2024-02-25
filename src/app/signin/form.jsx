@@ -16,7 +16,7 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('submitting...', form)
-    await axios.post('http://localhost:5000/signin', {...form})
+    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/signin`, {...form})
     .then(data=> {
       console.log('data', data)
       Swal.fire({
@@ -25,14 +25,22 @@ function Form() {
         icon: "success"
       });
       const tokens = data.data.tokens
-      Cookies.set("accessToken", tokens[tokens.length - 1])
+      if(data.data.role==='super'){
+        Cookies.remove('accessToken')
+        Cookies.remove('adminToken')
+        Cookies.set("adminToken", tokens[tokens.length - 1])
+      }else{
+        Cookies.remove('accessToken')
+        Cookies.remove('adminToken')
+        Cookies.set("accessToken", tokens[tokens.length - 1])
+      }
       router.replace('/')
     })
     .catch(e=>{
       console.log(e)
       Swal.fire({
         title: 'Error!',
-        text: e?.response?.data?.message || "An error occured while sending data",
+        text: e?.response?.data?.message || "An error occurred while sending data",
         icon: 'error',  
         confirmButtonText: 'Ok'
       })
@@ -53,7 +61,7 @@ function Form() {
         <p className="h-10"></p>
         <Input id="email" type="email" placeholder="Your Email" required={true} label="Email" value={form.email} onChange={handleChange} />
         <Input id="password" type="password" required={true} label="Password" value={form.password} onChange={handleChange} />
-        <ToggleBox id="remember" isChecked={true} label="Remember me" />
+        <ToggleBox id="remember" isChecked={true} label="Remember me"  />
         <Button type="submit" text="Sign in" className="!w-full mt-4" onClick={handleSubmit}/>
         <p className="h-10"></p>
         <div className="text-light">Go to <RouteLink href="/signup" text="sing up"/></div>

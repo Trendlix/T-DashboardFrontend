@@ -52,7 +52,7 @@ const DoughnutChart = ({ currentCustomers, newCustomers, totalVisitors }) => {
 
                 <div className='flex-1 flex flex-col justify-center gap-8 items-start pt-16'>
                     <div className='flex flex-row gap-3 items-center'>
-                      <CircleWithImage percentage={30} imageUrl={RedArrow} borderColor='#7D040A' shadowColor='#f3aab4' circleColor='#FFE0E4'/>
+                      <CircleWithImage percentage={30} imageUrl={RedArrow} borderColor='#D21734' shadowColor='#f3aab4' circleColor='#FFE0E4'/>
                       <div className='flex flex-col'>
                         <p className='font-bold text-xs text-dark'>+ 18%</p>
                         <p className='text-gray-400 text-xs'>Daily Customers</p>
@@ -72,11 +72,11 @@ const DoughnutChart = ({ currentCustomers, newCustomers, totalVisitors }) => {
             {/* footer of component */}
             <div className='self-center flex flex-row gap-6 pt-10'>
                 <div className='flex flex-row gap-2 items-center'>
-                    <Image src={RedCircle} width={15} height={12} alt='circle' />
+                    <Image src={RedCircle} className='w-15 h-15' alt='circle' />
                     <p className='text-md'>Current customers</p>
                 </div>
                 <div className='flex flex-row gap-2 items-center'>
-                    <Image src={YellowCircle} width={15} height={12} alt='circle' />
+                    <Image src={YellowCircle} className='w-15 h-15' alt='circle' />
                     <p className='text-sm'>New customers</p>
                 </div>
             </div>
