@@ -39,12 +39,7 @@ const Layout = ({ children }) => {
         <MainSideBar />
         <div className="flex-1 flex flex-col overflow-hidden">
             <MainNavBar profileData={profileData} />
-            <main className="bg-gray-100 overflow-y-auto flex-1 flex flex-col">
-              { Children.map(children, (child) => {
-              // Clone each child and pass the profileData prop
-              return cloneElement(child, { profileData });
-            })}
-          </main>
+            <main className="bg-gray-100 overflow-y-auto flex-1 flex flex-col">{children}</main>
         </div>
     </div>
   )

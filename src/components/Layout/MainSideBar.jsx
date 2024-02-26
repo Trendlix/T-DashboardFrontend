@@ -16,16 +16,12 @@ import settingsFocus from "@/public/icons/settings-white.svg"
 import ordersFocus from "@/public/icons/orders-white.svg"
 import adminFocus from "@/public/icons/admin-white.svg"
 import grayDashboard from "@/public/icons/gray-dashboard.svg"
-import Cookies from 'js-cookie'
 
 
 const MainSideBar = () => {
   const pathname = usePathname()
   const basePathname = pathname === '/' ? pathname : pathname.slice(1)
-  console.log(pathname)
 
-  const isAdmin = Cookies.get('adminToken')
-  console.log(isAdmin)
 
   const sideItems = [
     {
@@ -79,13 +75,6 @@ const MainSideBar = () => {
       label: 'Settings'
     },
   ]
-  let itemsWithoutAdmin = [];
-
-  if (!isAdmin) {
-    itemsWithoutAdmin = sideItems.filter((item) => item.href !== 'admin');
-  }
-  
-  // console.log('without ' + itemsWithoutAdmin.length);
   
 
   return (
@@ -95,7 +84,7 @@ const MainSideBar = () => {
           <Image src={trendAdmin} width={200} height={400} alt="" />
         </div>
         <div className={`flex flex-col gap-8 items-center justify-center`}>
-          {(itemsWithoutAdmin.length>0?itemsWithoutAdmin:sideItems).map((item)=>(
+          {sideItems.map((item)=>(
               <Link 
                 href={`/${item.href}`} 
                 key={item.id} 

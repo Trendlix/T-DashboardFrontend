@@ -9,7 +9,6 @@ import { cn } from '@/utils/utils'
 import Button from '@/components/ui/button'
 import Image from "next/image"
 import editBtn from "@/public/images/edit-button.png"
-import profilePhoto from "@/public/images/rounded-profile.png"
 import { useModal } from '@/app/ModalProvider'
 import Modal from '@/components/ui/Modal'
 import axios from "axios"
@@ -101,8 +100,6 @@ const ProfilePage = () => {
     },
     [handleClose, handleOpen, username, email, fullName, uploadedUrl, photoFile],
   )
-
-
 
   const handleSecondButtonClick = useCallback(
     async (e) => {

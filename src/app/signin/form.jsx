@@ -64,7 +64,6 @@ function Form() {
         <ToggleBox id="remember" isChecked={true} label="Remember me"  />
         <Button type="submit" text="Sign in" className="!w-full mt-4" onClick={handleSubmit}/>
         <p className="h-10"></p>
-        <div className="text-light">Go to <RouteLink href="/signup" text="sing up"/></div>
     </form>
   )
 }

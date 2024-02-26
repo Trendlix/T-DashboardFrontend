@@ -27,9 +27,10 @@ const AddUserPage = () => {
     const [isPhoneFocused, setIsPhoneFocused] = useState(false)
 
     const labelClassName = 'text-base font-semibold text-[#4C535F]'
-    const inputClassName = 'w-[400px] px-4 py-4 bg-white text-sm text-gray-600 outline-none h-18'
+    const inputClassName = 'w-[350px] px-4 py-4 bg-white text-sm text-gray-600 outline-none h-18'
 
     console.log(username, password, role, fullName, email, phoneNumber)
+    
     const handleAddUser = useCallback(async()=>{
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/signup`, {
@@ -60,7 +61,8 @@ const AddUserPage = () => {
             })
         }
     },[handleClose, handleOpen, role, username, email, password, phoneNumber, fullName])
-  return (
+  
+    return (
     <Layout>
         <div className='pt-6 pl-14 w-[90%] pb-72 '>
             <BackArrow />
@@ -73,8 +75,8 @@ const AddUserPage = () => {
                 TitleStyle='font-bold text-black text-sm'
                 subtitleStyle='text-gray-500 font-normal'
             />
-            <form className="flex flex-col items-start justify-around gap-6 mt-4 pt-10 pb-8 px-20 rounded-t-lg shadow-lg shadow-gray-200 bg-white ">
-                <div className='flex flex-row justify-center gap-24 '>
+            <form className="flex flex-col gap-4 mt-4 px-24 pt-10 pb-8 rounded-t-lg shadow-lg shadow-gray-200 bg-white ">
+                <div className='flex flex-row items-center justify-between '>
                     <div className='flex flex-col'>
                         <Input 
                             label='Full name' 
@@ -125,7 +127,7 @@ const AddUserPage = () => {
                         />
                         <div className='flex flex-col bg-white mb-5'>
                             <label htmlFor="phoneNumber" className={`block mb-2 font-medium text-gray-900 ${labelClassName}`}>Phone Number</label>
-                            <div className={`flex flex-row w-[400px] gap-2 bg-white border border-gray-300 rounded-lg items-center ${isPhoneFocused && `ring-yellow-500 border-yellow-500` }`}>
+                            <div className={`flex flex-row w-[350px] gap-2 bg-white border border-gray-300 rounded-lg items-center ${isPhoneFocused && `ring-yellow-500 border-yellow-500` }`}>
                                 <p className='border-r-2 border-gray-300 px-2 text-lg text-gray-400'>+1</p>
                                 <input 
                                     id='phoneNumber' 
@@ -163,7 +165,7 @@ const AddUserPage = () => {
 
                     </div>
                 </div>
-                <Button text='Add User' className='text-base sm:w-48 ' onClick={handleAddUser}/>
+                <Button text='Add User' className='text-base sm:w-48' onClick={handleAddUser}/>
                 <Modal modalText="User Added Successfully" opacity="bg-opacity-45" />
             </form>
         </div>
