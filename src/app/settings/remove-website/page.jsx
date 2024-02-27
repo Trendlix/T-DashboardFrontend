@@ -9,7 +9,7 @@ import Image from "next/image"
 import redCircle from "@/public/icons/red-circle.svg"
 import yellowCircle from "@/public/icons/yellow-circle.svg"
 
-const RemoveWebsitePage = () => {
+function RemoveWebsitePage () {
   return (
     <Layout>
         <div className='pt-6 pl-14 w-[90%] pb-72'>

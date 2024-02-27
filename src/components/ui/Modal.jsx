@@ -4,7 +4,7 @@ import Image from "next/image"
 import Gif from "@/public/images/modal.gif"
 import { ModalContext, useModal } from '../../app/ModalProvider';
 
-const Modal = ({modalText, opacity}) => {
+function Modal({modalText, opacity}){
   const { isModalOpen, handleClose } = useModal()
 
 //   const handleOuterClick = () => {

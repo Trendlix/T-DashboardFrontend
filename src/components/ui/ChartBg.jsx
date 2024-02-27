@@ -6,7 +6,7 @@ import Export from "@/public/icons/export.svg"
 import Trash from "@/public/icons/trash.svg"
 import Eye from "@/public/icons/eye.svg"
 
-const ChartBg = ({children, title, subTitle, statValue = '', isWidthHalf = true}) => {
+function ChartBg ({children, title, subTitle, statValue = '', isWidthHalf = true}) {
     const [isOpen, setIsOpen] = useState(false)
 
     const openModal = () =>{

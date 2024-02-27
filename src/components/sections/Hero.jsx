@@ -7,7 +7,7 @@ import Activity from '@/public/icons/Activity.svg'
 import Paper from '@/public/icons/Paper.svg'
 
 
-const Hero = () => {
+function Hero() {
     const cards =[
         {
           id: 1,

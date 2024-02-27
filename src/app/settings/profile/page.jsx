@@ -13,14 +13,14 @@ import { useModal } from '@/app/ModalProvider'
 import Modal from '@/components/ui/Modal'
 import axios from "axios"
 import Swal from "sweetalert2"
-import { imageUpload } from '@/utils/imageUpload'
+import { imageDelete, imageUpload } from '@/utils/firebaseStorage'
 import Cookies from "js-cookie"
 
 
 const labelClassName = 'text-[#4C535F] text-sm font-semibold'
 const inputClassName = 'w-[350px] px-4 py-4 bg-white text-sm text-gray-600 outline-none'
 
-const ProfilePage = () => {
+function ProfilePage() {
   const {handleOpen, handleClose} = useModal()
   const [profile, setProfile] = useState({})
 
@@ -55,24 +55,27 @@ const ProfilePage = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [photoFile, setPhotoFile] = useState(null)
-  const [uploadedUrl, setUploadedUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  // https://firebasestorage.googleapis.com/v0/b/trendlix-dashboard.appspot.com/o/userProfiles%2Fuser1.png3af5a26c-78c7-40fe-9956-9885ca1f81f2?alt=media&token=b6bec673-7818-4f43-a57b-e314a098059f
 
   const handleFirstButtonClick = useCallback(
     async (e) => {
       try {
         e.preventDefault()
-        if(photoFile!==null){
-          const imageUrl = await imageUpload(photoFile, 'userProfiles')
-          setUploadedUrl(imageUrl)
+        let imageUrl = ""
+        let beforeUpdateImg = profile?.photo
+        if(photoFile){
+          imageUrl = await imageUpload(photoFile, 'userProfiles')
         }
-        const response = await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API}/profile`, {
+        const requestBody = {
           username,
           fullName,
           email,
-          photo: uploadedUrl
-        }, {
+          ...(imageUrl && { photo: imageUrl }),
+        };
+
+        const response = await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API}/profile`, requestBody, {
           withCredentials: true,
           headers: {
             "Content-Type": 'application/json'
@@ -81,6 +84,9 @@ const ProfilePage = () => {
         if(response.status === 200) {
           setProfile(response.data)
           handleOpen()
+          if (beforeUpdateImg && imageUrl) {
+            await imageDelete(beforeUpdateImg);
+          }
         }
       } catch (error) {
         handleClose()
@@ -98,7 +104,7 @@ const ProfilePage = () => {
         setUsername('')
       }
     },
-    [handleClose, handleOpen, username, email, fullName, uploadedUrl, photoFile],
+    [handleClose, handleOpen, username, email, fullName, photoFile, profile.photo],
   )
 
   const handleSecondButtonClick = useCallback(
@@ -139,7 +145,7 @@ const ProfilePage = () => {
 
   return (
     <Layout>
-      <div className='pt-6 pl-14 w-[90%]'>
+      <div className='pt-6 px-14 w-full'>
         <BackArrow />
         <SettingsRectangle 
                 srcIcon={PersonalInfo} 

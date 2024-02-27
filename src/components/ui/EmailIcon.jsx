@@ -2,7 +2,7 @@ import Mail from '@/public/icons/mail.svg'
 import Image from 'next/image';
 
 
-const EmailIcon = ({ hasEmails }) => {
+function EmailIcon ({ hasEmails }) {
   return (
     <div className='relative'>
         <Image src={Mail} alt='' className="w-22 h-22 cursor-pointer"/>

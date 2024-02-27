@@ -5,7 +5,7 @@ import addWebsite from "@/public/icons/add-website.svg"
 import removeWebsite from "@/public/icons/rm-website.svg"
 import SettingsCard from '@/components/ui/SettingsCard'
 
-const AdminDashboardSettings = () => {
+function AdminDashboardSettings() {
     const adminDashboardCards = [
         {
             id: 1, 

@@ -5,7 +5,7 @@ import Dropdown from "@/public/icons/dropdown.svg"
 import { websiteAdminData } from '@/utils/data'
 
 
-const DropdownButton = ({ setList, list,  buttonText, options}) => {
+function DropdownButton ({ setList, list,  buttonText, options}) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [chosenText, setChosenText] = useState(buttonText)
 

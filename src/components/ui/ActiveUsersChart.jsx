@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJs, Ticks } from 'chart.js/auto';
 
-const ActiveUsersChart = () => {
+function ActiveUsersChart () {
   const data = {
     labels: Array.from({ length: 9 }, (_, i) => ''), // Empty labels for x-axis
     datasets: [

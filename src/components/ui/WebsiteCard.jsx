@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
 
 
 
-const WebsiteCard = ({item, index, isDelete = false}) => {
+function WebsiteCard ({item, index, isDelete = false}) {
     const {handleOpen, handleClose} = useModal()
 
     // const handleDeleteWebsite = useCallback(async() => {

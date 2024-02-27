@@ -2,7 +2,7 @@ import Bell from '@/public/icons/bell.svg'
 import Image from 'next/image';
 
 
-const NotificationIcon = ({ hasNotifications }) => {
+function NotificationIcon ({ hasNotifications }) {
   return (
     <div className='relative'>
         <Image src={Bell} alt='' className="w-22 h-22 cursor-pointer"/>

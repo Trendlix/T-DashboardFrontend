@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image"
 
-const SettingsRectangle = ({srcIcon = '', title, subTitle, iconWidth, iconHeight, subtitleStyle = '', TitleStyle = ''}) => {
+function SettingsRectangle ({srcIcon = '', title, subTitle, iconWidth, iconHeight, subtitleStyle = '', TitleStyle = ''}) {
   return (
     <div>
         <div className='flex flex-row gap-5 px-8 py-4 bg-white rounded-xl'>

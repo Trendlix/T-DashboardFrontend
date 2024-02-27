@@ -2,7 +2,7 @@
 import React from 'react'
 import SalesAreaChart from './SalesAreaChart'
 
-const SalesOverview = () => {
+function SalesOverview () {
   return (
     <div className='bg-white flex-1 rounded-xl pt-4 pb-2 shadow-xl relative flex flex-col'>
          <div className='flex flex-row justify-between px-4'>

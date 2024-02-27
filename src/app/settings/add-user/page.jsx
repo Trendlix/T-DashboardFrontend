@@ -15,7 +15,7 @@ import Swal from 'sweetalert2'
 import axios from "axios"
 
 
-const AddUserPage = () => {
+function AddUserPage (){
     const {handleOpen, handleClose} = useModal()
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -64,7 +64,7 @@ const AddUserPage = () => {
   
     return (
     <Layout>
-        <div className='pt-6 pl-14 w-[90%] pb-72 '>
+        <div className='pt-6 px-14 w-full pb-72 '>
             <BackArrow />
             <SettingsRectangle 
                 srcIcon={addUser} 

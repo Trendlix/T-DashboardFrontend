@@ -7,7 +7,7 @@ import PurpleCircle from "@/public/icons/purple-circle.svg"
 import BlueCircle from "@/public/icons/blue-circle.svg"
 import Image from "next/image"
 
-const BarChart = ({data}) => {
+function BarChart({data}) {
   const chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [

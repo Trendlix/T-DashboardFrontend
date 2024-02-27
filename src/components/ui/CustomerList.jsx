@@ -4,7 +4,7 @@ import User1 from "@/public/images/user1.png"
 import User2 from "../../public/images/user2.png"
 
 
-const CustomerList = () => {
+function CustomerList () {
     const users = [
         {
             id: 1,

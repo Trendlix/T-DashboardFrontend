@@ -10,7 +10,7 @@ import Image from "next/image"
 import CircleWithImage from './CircleWithImage'
 
 
-const DoughnutChart = ({ currentCustomers, newCustomers, totalVisitors }) => {
+function DoughnutChart ({ currentCustomers, newCustomers, totalVisitors }) {
     const totalCustomers = currentCustomers + newCustomers
     const currentCustomersPercentage = (currentCustomers / totalVisitors) * 100
     console.log(currentCustomersPercentage)

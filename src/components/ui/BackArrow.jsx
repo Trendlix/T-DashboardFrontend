@@ -5,7 +5,7 @@ import backArrow from "@/public/icons/back-arrow.svg"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
 
-const BackArrow = () => {
+function BackArrow () {
     const router = useRouter()
 
     const handleBackClick = () =>{

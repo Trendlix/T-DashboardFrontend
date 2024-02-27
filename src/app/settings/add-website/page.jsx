@@ -11,14 +11,14 @@ import Image from "next/image"
 import dropDown from "@/public/icons/dropdown-gray.svg"
 import { useModal } from '@/app/ModalProvider'
 import Modal from '@/components/ui/Modal'
-import { imageUpload } from '@/utils/imageUpload'
+import { imageUpload } from '@/utils/firebaseStorage'
 import axios from "axios"
 import Swal from 'sweetalert2'
 import Cookies from 'js-cookie';
 
 
 
-const AddWebsitePage = () => {
+function AddWebsitePage () {
     const {handleOpen, handleClose } = useModal()
     const [websiteName, setWebsiteName] = useState('')
     const [websiteType, setWebsiteType] = useState('wordpress')

@@ -5,7 +5,6 @@ import { Poppins } from 'next/font/google'
 import axios from 'axios';
 import { usePathname } from 'next/navigation';
 import Cookies from "js-cookie"
-import Link from "next/link"
 import { useRouter } from 'next/navigation';
 
 // Set withCredentials to true for all Axios requests
@@ -27,9 +26,7 @@ export default function RootLayout({ children }) {
   const adminToken = Cookies.get('adminToken') 
   const accessToken = Cookies.get('accessToken') 
   if((!adminToken && !accessToken) && pathname!=='/signin'){
-    setTimeout(() => {
-      router.replace('/signin')
-    }, 3000);
+    router.replace('/signin')
   }
   return (
     <html lang="en">
@@ -42,9 +39,7 @@ export default function RootLayout({ children }) {
         <ModalProvider>
             {children}
         </ModalProvider>
-        )
-        }
-        
+        )}
       </body>
     </html> 
   )

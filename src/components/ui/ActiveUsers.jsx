@@ -8,7 +8,7 @@ import Cart from "@/public/icons/cart.svg"
 import Items from "@/public/icons/items.svg"
 
 
-const ActiveUsers = () => {
+function ActiveUsers () {
   const activityData = [
     {
       id: 1,

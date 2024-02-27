@@ -9,7 +9,7 @@ import Xd from "@/public/icons/xd.svg"
 
 
 
-const OrdersOverview = () => {
+function OrdersOverview () {
     const salesData = [
         {
             id: 1,
@@ -56,7 +56,7 @@ const OrdersOverview = () => {
 
     ]
   return (
-    <div className='bg-white w-2/6 rounded-xl pt-4 pb-2 shadow-xl relative flex flex-col'>
+    <div className='bg-white w-[40%] rounded-xl pt-4 pb-2 shadow-xl relative flex flex-col'>
          <div className='flex flex-row justify-between px-4'>
             <div className='flex flex-col'>
                 <h1 className='text-xl font-semibold text-dark'>Orders Overview For Maggadit</h1>
@@ -64,7 +64,7 @@ const OrdersOverview = () => {
                     <span className='text-green-500 font-bold'>{`+30%`}</span> this month
                 </p>
             </div>
-        </div>
+        </div>  
         <div className='z-5 border-b-4 border-b-gray-200 mt-4'></div>
         <div className='mt-3'>
             {salesData.map((item)=>(

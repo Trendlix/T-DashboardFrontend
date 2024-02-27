@@ -6,7 +6,7 @@ import axios from "axios"
 import Cookies from "js-cookie"
 
 
-const Layout = ({ children }) => {
+function Layout({ children }) {
   const [profileData, setProfileData] = useState()
   const [isLoading, setIsLoading] = useState(false)
 

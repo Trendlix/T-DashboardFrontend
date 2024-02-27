@@ -12,7 +12,7 @@ import DropdownButton from '@/components/ui/DropdownButton'
 import WebsiteCard from '@/components/ui/WebsiteCard'
 import axios from "axios"
 
-const Page = () => {
+function Page(){
   const [list, setList] = useState(websiteAdminData)
   const [isLoading, setIsLoading] = useState(false)
 

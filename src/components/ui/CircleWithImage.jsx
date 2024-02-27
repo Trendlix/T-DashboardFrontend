@@ -3,7 +3,7 @@ import Image from "next/image"
 
 import React from 'react';
 
-const CircleWithImage = ({ percentage, imageUrl, borderColor, circleColor, shadowColor}) => {
+function CircleWithImage ({ percentage, imageUrl, borderColor, circleColor, shadowColor}){
   // Calculate the border radius based on the percentage
   const borderRadius = `${percentage}%`;
   console.log(borderRadius);

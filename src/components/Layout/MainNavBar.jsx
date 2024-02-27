@@ -13,7 +13,7 @@ import Cookies from "js-cookie"
 import { useRouter } from "next/navigation"
 import Swal from "sweetalert2"
 
-const MainNavBar = ({profileData}) => {
+function MainNavBar({profileData}){
   const hasNotifications = true;
   const hasEmails = true;
   const [dropMenuOpen, setDropMenuOpen] = useState(false)
