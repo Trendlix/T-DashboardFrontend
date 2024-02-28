@@ -26,14 +26,11 @@ function Layout({ children }) {
     }
   },[])
 
-  const accessToken = Cookies.get('accessToken') || Cookies.get('adminToken')
   useEffect(()=>{
-    if(accessToken) {
-      fetchProfileData()
-      console.log(profileData)
-    }
-  },[fetchProfileData, profileData, accessToken])
-
+    fetchProfileData()
+  },[fetchProfileData])
+  
+  console.log(profileData)
   return (
     <div className="flex flex-row w-screen h-screen">
         <MainSideBar />

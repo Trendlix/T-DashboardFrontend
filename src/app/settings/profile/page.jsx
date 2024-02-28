@@ -14,7 +14,6 @@ import Modal from '@/components/ui/Modal'
 import axios from "axios"
 import Swal from "sweetalert2"
 import { imageDelete, imageUpload } from '@/utils/firebaseStorage'
-import Cookies from "js-cookie"
 
 
 const labelClassName = 'text-[#4C535F] text-sm font-semibold'
@@ -40,14 +39,11 @@ function ProfilePage() {
     }
   },[])
 
-  const accessToken = Cookies.get('accessToken') || Cookies.get('adminToken')
   useEffect(()=>{
-    if(accessToken) {
-      fetchProfileData()
-      console.log(profile)
-    }  
-  },[accessToken, fetchProfileData, profile])
+    fetchProfileData()
+  },[fetchProfileData])
 
+  console.log(profile)
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
@@ -82,7 +78,7 @@ function ProfilePage() {
           }
         })
         if(response.status === 200) {
-          setProfile(response.data)
+          setProfile(response.data.profile)
           handleOpen()
           if (beforeUpdateImg && imageUrl) {
             await imageDelete(beforeUpdateImg);
@@ -111,7 +107,7 @@ function ProfilePage() {
     async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API}/profile`, {
+        const response = await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_API}/user`, {
           currentPassword, 
           newPassword,
           confirmPassword,
@@ -122,7 +118,6 @@ function ProfilePage() {
           }
         })
         if(response.status === 200) {
-          setProfile(response.data)
           handleOpen()
         }
       } catch (error) {

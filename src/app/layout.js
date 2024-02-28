@@ -23,15 +23,14 @@ const poppins = Poppins({
 export default function RootLayout({ children }) {
   const pathname = usePathname()
   const router = useRouter()
-  const adminToken = Cookies.get('adminToken') 
-  const accessToken = Cookies.get('accessToken') 
-  if((!adminToken && !accessToken) && pathname!=='/signin'){
+  const token = Cookies.get('adminToken') || Cookies.get('accessToken') 
+  if((!token) && pathname!=='/signin'){
     router.replace('/signin')
   }
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
-        {(!adminToken && !accessToken) && pathname!=='/signin' ? 
+        {(!token) && pathname!=='/signin' ? 
         (
           <div className='h-screen w-screen bg-white'>
           </div>

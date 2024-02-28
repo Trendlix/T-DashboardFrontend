@@ -1,4 +1,3 @@
-// Your component file, e.g., CircleWithImage.js
 import Image from "next/image"
 
 import React from 'react';
@@ -27,3 +26,4 @@ function CircleWithImage ({ percentage, imageUrl, borderColor, circleColor, shad
 };
 
 export default CircleWithImage;
+

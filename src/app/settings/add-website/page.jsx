@@ -14,8 +14,6 @@ import Modal from '@/components/ui/Modal'
 import { imageUpload } from '@/utils/firebaseStorage'
 import axios from "axios"
 import Swal from 'sweetalert2'
-import Cookies from 'js-cookie';
-
 
 
 function AddWebsitePage () {
@@ -53,8 +51,6 @@ function AddWebsitePage () {
             const imageUrl = await imageUpload(logo, 'WebsitesLogos')
             setUploadedUrl(imageUrl)
             // TODO: Post all data to our api including imageUrl uploaded on firebase
-            const accessToken = Cookies.get('accessToken')
-            console.log('Access token: ' + accessToken)
             await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/website`, {
                 name: websiteName,
                 domain,
