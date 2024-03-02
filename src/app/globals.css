@@ -54,3 +54,10 @@ img{
     border: 4px solid #af253c; /* Set your desired color for the border */
     border-radius: 50%;
   }
+
+
+  @keyframes animate {
+    to {
+      background-size: 100%;
+    }
+  }

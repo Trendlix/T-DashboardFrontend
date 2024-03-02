@@ -39,7 +39,7 @@ function DoughnutChart ({ currentCustomers, newCustomers, totalVisitors }) {
     <ChartBg title='Visitors' subTitle='visitors of Trendlix'>
         <div className='flex flex-col h-full justify-between '>
           {/* chart  */}
-            <div className='flex flex-row pt-6 gap-6 items-center' >
+            <div className='flex flex-row pt-6 gap-2 items-center' >
                 <div className='relative e-full flex flex-row items-center'>
                     <Doughnut data={data} options={options} className='z-20 p-0' />
                     <div className='bg-[#FAFBFF] w-24 h-24 rounded-full flex items-center justify-center absolute right-[34%] top-[43%] z-10 shadow-2xl shadow-gray-500'>
@@ -52,18 +52,18 @@ function DoughnutChart ({ currentCustomers, newCustomers, totalVisitors }) {
 
                 <div className='flex-1 flex flex-col justify-center gap-8 items-start pt-16'>
                     <div className='flex flex-row gap-3 items-center'>
-                      <CircleWithImage percentage={30} imageUrl={RedArrow} borderColor='#D21734' shadowColor='#f3aab4' circleColor='#FFE0E4'/>
+                      <CircleWithImage percentage={150} imageUrl={RedArrow} borderColor='#D21734' shadowColor='#f3aab4' circleColor='#FFE0E4'/>
                       <div className='flex flex-col'>
                         <p className='font-bold text-xs text-dark'>+ 18%</p>
-                        <p className='text-gray-400 text-xs'>Daily Customers</p>
+                        <p className='text-gray-400 text-[12px] text-wrap'>Daily Customers</p>
                       </div>
                     </div>
 
                     <div className='flex flex-row gap-3 items-center'>
-                      <CircleWithImage percentage={30} imageUrl={YellowArrow} borderColor='' shadowColor='#ffe186' circleColor='#faebbe'/>
+                      <CircleWithImage percentage={250} imageUrl={YellowArrow} borderColor='#f3bb15' shadowColor='#ffe186' circleColor='#faebbe'/>
                       <div className='flex flex-col'>
                         <p className='font-bold text-xs text-dark'>+ 14%</p>
-                        <p className='text-gray-400 text-xs'>Weekly new Customers</p>
+                        <p className='text-gray-400 text-[12px] text-wrap'>Weekly Customers</p>
                       </div>
                     </div>
                 </div>
