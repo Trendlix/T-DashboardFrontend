@@ -78,11 +78,9 @@ function MainSideBar() {
   
   const workingLinks = ['analytics', 'customers', 'blogs', 'orders']
   return (
-    <div className="hidden md:block bg-white rounded-xl h-screen px-6 overflow-hidden">
+    <section className="hidden md:block bg-white rounded-xl h-screen px-6 overflow-hidden">
       <div className="flex flex-col items-center justify-center gap-16 py-8">
-        <div className="mt-4">
-          <Image src={trendAdmin} width={200} height={400} alt="" />
-        </div>
+        <Image src={trendAdmin} width={200} height={400} alt="" className="mt-4" />
         <div className={`flex flex-col gap-8 items-center justify-center`}>
           {sideItems.map((item)=>(
               workingLinks.includes(item.href)?(
@@ -113,7 +111,7 @@ function MainSideBar() {
             ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

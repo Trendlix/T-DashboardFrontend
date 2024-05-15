@@ -1,10 +1,8 @@
 "use client"
-import { useCallback, useEffect, useState, Children, cloneElement } from "react"
+import { useCallback, useEffect, useState } from "react"
 import MainNavBar from "./MainNavBar"
 import MainSideBar from "./MainSideBar"
 import axios from "axios"
-import Cookies from "js-cookie"
-
 
 function Layout({ children }) {
   const [profileData, setProfileData] = useState()

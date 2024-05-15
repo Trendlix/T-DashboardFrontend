@@ -45,7 +45,7 @@ function Page(){
           <div className='flex items-center justify-center flex-col gap-4 py-64'>
             <div className='w-[80%] h-full'>
               {/* above part */}
-              <div className='relative flex flex-row items-center gap-6 p-2 pb-8'>
+              <div className='relative flex flex-row items-center gap-6 px-2 py-8'>
                 <DropdownButton setList={setList} list={list} buttonText='All' options={['All','Custom Coding', 'Wordpress']} />
                 <DropdownButton setList={setList} list={list} buttonText='A-Z' options={['A-Z', 'Z-A']} />
               </div>
