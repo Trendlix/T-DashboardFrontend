@@ -46,7 +46,7 @@ function MainNavBar({profileData}){
     <nav className='flex flex-row h-28 bg-white py-2 items-center justify-around'>
       <div className="flex flex-col gap-1">
         <h1 className="font-bold text-3xl text-dark capitalize">{`Hi ${profileData? `, ${profileData.username}` : ''}`}</h1>
-        <p className="text-[#718096] text-sm text-nowrap">Let's check your website today</p>
+        <p className="text-[#718096] text-sm text-nowrap">Lets check your website today</p>
       </div>
       <div className="flex flex-row gap-2 items-center w-[400px] h-[20px] py-6 px-[16px] bg-[#FAFAFA] rounded-lg text-sm ">
         <Image width="auto" height="auto" src={Search} className="" alt=""/>
