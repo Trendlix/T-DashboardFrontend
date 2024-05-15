@@ -1,11 +1,7 @@
-"use client"
-import { ModalProvider } from './ModalProvider'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import axios from 'axios';
-import { usePathname } from 'next/navigation';
-import Cookies from "js-cookie"
-import { useRouter } from 'next/navigation';
+import AuthLayout from '@/components/Layout/authLayout';
 
 // Set withCredentials to true for all Axios requests
 axios.defaults.withCredentials = true;
@@ -21,12 +17,12 @@ const poppins = Poppins({
 // }
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname()
-  const router = useRouter()
-  const token = Cookies.get('adminToken') || Cookies.get('accessToken') 
-  if((!token) && pathname!=='/signin'){
-    router.replace('/signin')
-  }
+  // const pathname = usePathname()
+  // const router = useRouter()
+  // const token = Cookies.get('adminToken') || Cookies.get('accessToken') 
+  // if((!token) && pathname!=='/signin'){
+  //   router.replace('/signin')
+  // }
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
@@ -39,9 +35,12 @@ export default function RootLayout({ children }) {
             {children}
         </ModalProvider>
         )} */}
-         <ModalProvider>
+         {/* <ModalProvider>
             {children}
-        </ModalProvider>
+        </ModalProvider> */}
+        <AuthLayout>
+          {children}
+        </AuthLayout>
       </body>
     </html> 
   )
