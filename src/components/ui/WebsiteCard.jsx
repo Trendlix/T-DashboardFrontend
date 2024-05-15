@@ -65,7 +65,7 @@ function WebsiteCard ({item, index, isDelete = false}) {
             </div>
         ) : (
             <div className='flex flex-row justify-center gap-3 items-center text-sm font-semibold'>
-                <a href={item.websiteLink} target='_blank' className={`text-white text-center w-32 h-7 py-0.5 rounded-md bg-gradient-to-r ${item.isCustom ? `from-[#e06d7e] to-[#e24a61]` : `from-[#F8C128] to-[#f0d68f]`} `}>Visit Website</a>
+                <Link href={item.websiteLink} target='_blank' className={`text-white text-center w-32 h-7 py-0.5 rounded-md bg-gradient-to-r ${item.isCustom ? `from-[#e06d7e] to-[#e24a61]` : `from-[#F8C128] to-[#f0d68f]`} `}>Visit Website</Link>
                 <Link href={item.adminDashboardLink} className='text-[#464646] bg-[#CECECE] w-40 text-center h-7 py-0.5 rounded-md'>Admin Dashboard</Link>
             </div>
         )}

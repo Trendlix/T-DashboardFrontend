@@ -31,7 +31,8 @@ function MainNavBar({profileData}){
           Cookies.remove('adminToken')
           Cookies.remove('accessToken')
         }
-        router.replace('/signin')
+        router.push('/signin')
+        
     } catch (error) {
       console.log(error)
       Swal.fire({

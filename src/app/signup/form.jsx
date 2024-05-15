@@ -21,7 +21,7 @@ function Form() {
           text: "A new user have been added!",
           icon: "success"
         });
-        router.replace('/signin')
+        router.push('/signin')
       })
       .catch(e=>{
         console.log(e)

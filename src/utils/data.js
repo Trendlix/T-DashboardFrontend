@@ -69,7 +69,7 @@ export const websiteAdminData = [
         company: 'Tawwos',
         isCustom: false,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
     {
         id: 8,
@@ -77,7 +77,7 @@ export const websiteAdminData = [
         company: 'Hatly',
         isCustom: true,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
     {
         id: 9,
@@ -85,7 +85,7 @@ export const websiteAdminData = [
         company: 'AFCMH',
         isCustom: false,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
     {
         id: 10,
@@ -93,7 +93,7 @@ export const websiteAdminData = [
         company: 'Shades Home',
         isCustom: false,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
     {
         id: 11,
@@ -101,7 +101,7 @@ export const websiteAdminData = [
         company: 'Soul Leathers',
         isCustom: false,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
     {
         id: 12,
@@ -109,7 +109,7 @@ export const websiteAdminData = [
         company: 'Waves Seasons',
         isCustom: true,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
     {
         id: 13,
@@ -125,6 +125,6 @@ export const websiteAdminData = [
         company: 'Trendlix Properties',
         isCustom: false,
         adminDashboardLink: '/',
-        websiteLink: ''
+        websiteLink: '/admin'
     },
 ]

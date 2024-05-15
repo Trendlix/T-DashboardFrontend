@@ -7,6 +7,7 @@ import RouteLink from "@/components/ui/link"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import Swal from 'sweetalert2'
+import Cookies from "js-cookie"
 
 function Form() {
   const router = useRouter()
@@ -23,17 +24,17 @@ function Form() {
         text: "Welcome to trendlix dashboard",
         icon: "success"
       });
-      // const tokens = data.data.tokens
-      // if(data.data.role==='super'){
-      //   Cookies.remove('accessToken')
-      //   Cookies.remove('adminToken')
-      //   Cookies.set("adminToken", tokens[tokens.length - 1])
-      // }else{
-      //   Cookies.remove('accessToken')
-      //   Cookies.remove('adminToken')
-      //   Cookies.set("accessToken", tokens[tokens.length - 1])
-      // }
-      router.replace('/')
+      const tokens = data.data.tokens
+      if(data.data.role==='super'){
+        Cookies.remove('accessToken')
+        Cookies.remove('adminToken')
+        Cookies.set("adminToken", tokens[tokens.length - 1])
+      }else{
+        Cookies.remove('accessToken')
+        Cookies.remove('adminToken')
+        Cookies.set("accessToken", tokens[tokens.length - 1])
+      }
+      router.push('/')
     })
     .catch(e=>{
       console.log(e)
