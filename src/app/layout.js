@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
-        {(!token) && pathname!=='/signin' ? 
+        {/* {(!token) && pathname!=='/signin' ? 
         (
           <div className='h-screen w-screen bg-white'>
           </div>
@@ -38,7 +38,10 @@ export default function RootLayout({ children }) {
         <ModalProvider>
             {children}
         </ModalProvider>
-        )}
+        )} */}
+         <ModalProvider>
+            {children}
+        </ModalProvider>
       </body>
     </html> 
   )
