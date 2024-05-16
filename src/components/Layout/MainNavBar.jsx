@@ -30,9 +30,8 @@ function MainNavBar({profileData}){
       if(response.status === 200){
           Cookies.remove('adminToken')
           Cookies.remove('accessToken')
+          router.push('/signin')
         }
-        router.push('/signin')
-        
     } catch (error) {
       console.log(error)
       Swal.fire({
@@ -43,6 +42,7 @@ function MainNavBar({profileData}){
       })
     }
   },[router])
+
   return (
     <nav className='flex flex-row h-28 bg-white py-2 items-center justify-around'>
       <div className="flex flex-col gap-1">
