@@ -15,7 +15,9 @@ function Layout({ children }) {
         withCredentials: true,
         headers:{'Content-Type': 'application/json'}
       })
+      console.log(response)
       const data = await response.data
+      console.log(data)
       setProfileData(data)
     } catch (error) {
       console.log(error)

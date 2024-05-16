@@ -105,9 +105,7 @@ function MainSideBar() {
                       </div>
                     )}
                   </Link>
-                )
-
-              
+                )           
             ))}
         </div>
       </div>

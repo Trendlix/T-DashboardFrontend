@@ -16,25 +16,32 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('submitting...', form)
-    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/signin`, {...form})
+    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/signin`, {...form}, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .then(data=> {
-      console.log('data', data)
+      console.log('data', data) 
       Swal.fire({
         title: "Success!",
         text: "Welcome to trendlix dashboard",
         icon: "success"
-      });
-      const tokens = data.data.tokens
-      if(data.data.role==='super'){
-        Cookies.remove('accessToken')
-        Cookies.remove('adminToken')
-        Cookies.set("adminToken", tokens[tokens.length - 1])
-      }else{
-        Cookies.remove('accessToken')
-        Cookies.remove('adminToken')
-        Cookies.set("accessToken", tokens[tokens.length - 1])
-      }
-      router.push('/')
+      }).then(()=>{
+        router.push('/')
+      })
+      // const tokens = data.data.tokens
+      // if(data.data.role==='super'){
+      //   Cookies.remove('accessToken')
+      //   Cookies.remove('adminToken')
+      //   Cookies.set("adminToken", tokens[tokens.length - 1])
+      // }else{
+      //   Cookies.remove('accessToken')
+      //   Cookies.remove('adminToken')
+      //   Cookies.set("accessToken", tokens[tokens.length - 1])
+      // }
+      
     })
     .catch(e=>{
       console.log(e)
