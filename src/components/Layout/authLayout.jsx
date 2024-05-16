@@ -1,22 +1,38 @@
 "use client"
 import { usePathname, useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
-import Cookies from "js-cookie"
+import React, { useCallback, useEffect, useState } from 'react'
 import { ModalProvider } from '@/app/ModalProvider'
-
+import axios from 'axios'
 export default function AuthLayout({children}) {
     const pathname = usePathname()
     const router = useRouter()
-    const token = Cookies.get('adminToken') || Cookies.get('accessToken') 
+    const [isAuth, setIsAuth] = useState(false)    
+
+    const authentication = useCallback(async()=>{
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API}/me`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type" : 'application/json'
+        }
+      })
+      const data = res.data
+      console.log(res.data)
+      if(res.status === 200 && data.success===true){
+        setIsAuth(true)
+      }else{
+        setIsAuth(false)
+        router.push('/signin')
+      }
+    },[router])
+
     useEffect(()=>{
-        if((!token)){
-            router.push('/signin')
-          }
-    },[router, token])
+      authentication()
+      console.log(isAuth)
+    },[authentication, isAuth])
    
   return (
     <div>
-        {(!token) && pathname!=='/signin' ? 
+        {!isAuth && pathname!=='/signin' ? 
         (
           <div className='h-screen w-screen bg-white'>
           </div>
@@ -25,6 +41,9 @@ export default function AuthLayout({children}) {
             {children}
         </ModalProvider>
         )}
+        {/* <ModalProvider>
+            {children}
+        </ModalProvider> */}
     </div>
   )
 }

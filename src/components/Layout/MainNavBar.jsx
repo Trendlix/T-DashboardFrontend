@@ -9,7 +9,6 @@ import { useCallback, useState } from "react"
 import { CgProfile } from "react-icons/cg";
 import { LuLogOut } from "react-icons/lu";
 import axios from "axios"
-import Cookies from "js-cookie"
 import { useRouter } from "next/navigation"
 import Swal from "sweetalert2"
 
@@ -28,8 +27,6 @@ function MainNavBar({profileData}){
         }
       })
       if(response.status === 200){
-          Cookies.remove('adminToken')
-          Cookies.remove('accessToken')
           router.push('/signin')
         }
     } catch (error) {
