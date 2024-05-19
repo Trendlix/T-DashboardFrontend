@@ -7,7 +7,6 @@ import RouteLink from "@/components/ui/link"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import Swal from 'sweetalert2'
-import Cookies from "js-cookie"
 
 function Form() {
   const router = useRouter()
