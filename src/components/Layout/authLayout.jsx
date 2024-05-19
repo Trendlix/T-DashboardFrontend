@@ -28,7 +28,7 @@ export default function AuthLayout({children}) {
     useEffect(()=>{
       authentication()
       console.log(isAuth)
-    },[])
+    },[pathname])
    
   return (
     <div>
