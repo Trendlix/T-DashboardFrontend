@@ -5,10 +5,28 @@ import SettingsIcon from "@/public/icons/settings-black.svg"
 import PersonalInfo from "@/public/icons/personal-info.svg"
 import SettingsCard from '@/components/ui/SettingsCard'
 import AdminDashboardSettings from '@/components/sections/AdminDashboardSettings'
-import Cookies from 'js-cookie'
+import { useCallback, useEffect, useState } from 'react'
+import axios from 'axios'
 
 function SettingsPage() {
-  const adminToken = Cookies.get('adminToken')
+  const [isAuthAdmin, setIsAuthAdmin] = useState(false)    
+
+  const authentication = useCallback(async()=>{
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_API}/me`, {
+      withCredentials: true,
+      headers: {
+        "Content-Type" : 'application/json'
+      }
+    })
+    const data = res.data
+    if(res.status === 200 && data.success===true){
+      setIsAuthAdmin(data.isAdmin)
+    }
+  },[])
+
+  useEffect(()=>{
+    authentication()
+  },[])
 
   return (
     <Layout>
@@ -18,7 +36,7 @@ function SettingsPage() {
                 <h2 className='text-dark font-semibold text-md pl-2'>Personal Info</h2>
                 <SettingsCard title='My Personal info' subTitle='Provide your personal details Name , picture.' srcIcon={PersonalInfo} iconHeight={35} iconWidth={35} cardLink='/settings/profile' />
             </div>
-            {adminToken && (<AdminDashboardSettings />)}            
+            {isAuthAdmin && (<AdminDashboardSettings />)}            
         </div>
     </Layout>
   )
