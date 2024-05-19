@@ -6,6 +6,7 @@ import PersonalInfo from "@/public/icons/personal-info.svg"
 import SettingsCard from '@/components/ui/SettingsCard'
 import AdminDashboardSettings from '@/components/sections/AdminDashboardSettings'
 import { useCallback, useEffect, useState } from 'react'
+import axios from 'axios'
 
 function SettingsPage() {
   const [isAuthAdmin, setIsAuthAdmin] = useState(false)    
